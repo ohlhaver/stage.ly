@@ -1,0 +1,73 @@
+ActiveAdmin.register Event do
+
+#	controller do
+#		belongs_to :artist, :polymorphic => true, :optional => true
+#	end
+
+  index do
+  	column :id, :sortable => 'id'
+	column "Title", :sortable => 'title' do |event|
+      link_to event.title, admin_event_path(event) 
+    end
+    column "Artists" do |event|
+    	table_for event.artists do 
+    		column do |artist|
+    			link_to artist.name, admin_artist_path(artist) 
+    		end
+    	end 
+    end
+
+  	column :time, :sortable => 'time'
+    column :price, :sortable => 'price'
+    column :url, :sortable => 'url'
+    column :updated_at
+    default_actions
+
+  end
+
+
+	show do |event|
+	   @event = Event.find(params[:id])
+			attributes_table do
+		        row :id
+		        row :title
+		        row :venue
+		        row :time
+		        row :price
+		        row :url
+		        row :updated_at
+		        row :created_at
+
+	      	end
+
+
+
+	table_for @event.performances do
+		h5 "Performanes"
+		column :title do |performance|
+	      link_to performance.title, admin_performance_path(performance) 
+	    end
+
+    
+    end
+
+ 
+
+
+  end
+
+     form do |f|
+	    f.inputs "Event" do
+	      f.input :venue
+	      f.input :time
+	      f.input :price
+	      f.input :url
+	    end
+	    f.inputs "Artists" do
+	      
+	      f.input :artists
+	    end
+	    f.buttons
+  end
+  
+end

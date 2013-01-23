@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  venue_id: 1
+  time: 2013-01-12 21:05:34
+  price: MyString
+  url: MyString
+
+two:
+  venue_id: 1
+  time: 2013-01-12 21:05:34
+  price: MyString
+  url: MyString

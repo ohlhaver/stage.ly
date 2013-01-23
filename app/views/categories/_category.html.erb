@@ -1,0 +1,1 @@
+<% if category.id == params[:category].to_i %>, <%= category.name%><% else %>, <%=link_to category.name, :controller => "events", :action => "index", :category => category.id %><% end %>

@@ -1,0 +1,21 @@
+<% provide :page_title, @venue.name %>
+<% provide :title, @venue.name%>
+<% provide :keywords, @venue.name %>
+
+	<%= @venue.address %> <%= link_to "(Karte)","http://maps.google.de/maps?q=#{@venue.address}+Berlin" %>
+	<br>
+	<%= link_to @venue.url, "http://#{@venue.url}" %>
+	<br><br><br>
+
+	<div class = "event_bar">
+	<div class="span4">
+		Künstler
+	</div>
+	<div class="span4">
+		Komponisten
+	</div>
+	<div class="span2">
+		Beginn
+	</div>
+</div>
+	<%= render @events %>

@@ -1,0 +1,65 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+.container {
+    
+  width: 100%;
+
+}
+
+body {
+		font-size: 17px;
+		font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+		a {
+			color: #3b5998;
+		}
+
+}
+
+.fb-like {
+	margin-top: 17px;
+}
+
+.logo {
+		font-size: 23px;
+
+		margin-top: 8px;
+		margin-bottom: 60px;
+
+}
+
+.slogan {
+		font-size: 19px;
+		margin-top: 20px;
+				a {
+			color: $black;
+		}
+}
+
+.event_listing {
+	
+	padding-top: 60px;
+			
+
+}
+
+.event_details {
+	
+
+}
+
+
+.category_menu {
+	
+
+
+
+}
+
+
+.event_bar {
+
+}

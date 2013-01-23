@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_slogan(yield(:page_title)) %> - stage.ly</title>
+   <meta name="description" content="<%= full_slogan(yield(:page_title)) %>"/>     
+    <meta name="keywords" content="<%= yield(:keywords) + ", " + "Berlin, Konzerte, Concerts"%>"/>
+    <link rel="icon" type="image/png" href="/eighth-notes.png" />
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=367315919957325";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+	<header>
+		 <div class="container-fluid">
+			<div class="row-fluid">
+				<div class = "span2">
+						<div class='logo'>
+							<%= image_tag('/eighth-notes-logo-big.png') %>
+							<%= link_to "stage.ly", root_path %>
+						</div>
+				</div>	
+				<div class ="span10">
+					<div class ="span3">
+					<div class='slogan'>
+						<%= full_slogan(yield(:title)) %>
+					</div>
+					</div>
+					<div class ="span6">	
+					<div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div>
+					
+					</div>	
+				</div>					
+			</div>
+		</div>
+	</header>
+ <div class="container-fluid">
+	<div class="row-fluid">
+	 	<div class="span2">
+			<div class="category_menu">
+				<% if params[:action] == "index" %>
+					<% if params[:category] %>
+						<%= link_to "Alle", root_path %>
+						<%else%>
+						<%= "Alle" %>
+						<%end%>
+
+					<%= render :partial => 'categories/menu_category', :collection => categories %>
+				<%end%>
+			</div>
+		</div>
+		<div class="span10">
+			<%= yield %>
+		</div>    
+	</div>
+</div>
+
+
+</body>
+</html>

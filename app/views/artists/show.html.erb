@@ -1,0 +1,17 @@
+<% provide :title, @artist.name + " in Berlin" if @artist %>
+<% provide :page_title, @artist.name + " in Berlin" if @artist %>
+<% provide :keywords, @artist.name %>
+
+	<div class="span4">
+		Künstler
+	</div>
+	<div class="span2">
+		Komponisten
+	</div>
+	<div class="span2">
+		Ort
+	</div>
+	<div class="span2">
+		Beginn
+	</div>
+	<%= render @events %>

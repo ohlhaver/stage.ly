@@ -1,0 +1,26 @@
+<% provide :title, @event.artists.first.name + more_event_titles(@event) + " @ " + @event.venue.name + " on " + @event.time.strftime("%a, %b %d")  %>
+<% provide :page_title, @event.artists.first.name + more_event_titles(@event) + " @ " + @event.venue.name %>
+<% provide :keywords, @event.artists.first.name + more_event_titles(@event) + ", " + @event.venue.name %>
+		<div class= "event_details">
+			Performer:<br>
+			<%= render @event.artists %>
+			<br><br>
+			<% if @event.works.any? %>
+			Werke:<br>
+				<%= render :partial => 'works/full_work', :collection => @event.works %>
+			<br><br>
+			<% end %> 
+			Start:<br>
+			<%= @event.time.strftime("%a, %b %d, %H:%I Uhr") %>
+			<br><br><br>
+			Ort:<br>
+			<%= link_to @event.venue.name, @event.venue %>
+			<br>
+			<%= @event.venue.address %> <%= link_to "(Map)","http://maps.google.de/maps?q=#{@event.venue.address}+Berlin" %>
+			<br>
+			<%= link_to @event.venue.url, "http://#{@event.venue.url}" %>
+			<br><br>
+			<%= "Preis: " + @event.price if @event.price != "" %>
+			<br><br>
+		</div>
+

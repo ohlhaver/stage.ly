@@ -1,0 +1,24 @@
+<div class = "event_listing" onclick="location.href='<%=event_path(event)%>';" style="cursor:pointer">
+	
+	<div class="span4">
+		<%= render event.artists %>
+	</div>
+	<div class="span2">
+		<% if event.works.first %>
+			<%= render event.works %>
+			<%else%>
+			&nbsp;
+			<%end%>
+
+		
+	</div>
+	<div class="span2">
+		<%= link_to event.venue.name, event.venue unless params[:controller] == "venues"%>
+	</div>
+	<div class="span2">
+		<%= event.time.strftime("%a, %b %d, %H:%I Uhr") %>
+	</div>
+	
+</div>
+<br>
+
