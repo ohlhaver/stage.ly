@@ -1,26 +1,69 @@
 <% provide :title, @event.artists.first.name + more_event_titles(@event) + " @ " + @event.venue.name + " on " + @event.time.strftime("%a, %b %d")  %>
 <% provide :page_title, @event.artists.first.name + more_event_titles(@event) + " @ " + @event.venue.name %>
 <% provide :keywords, @event.artists.first.name + more_event_titles(@event) + ", " + @event.venue.name %>
+
+<div class = "span6">
 		<div class= "event_details">
-			Performer:<br>
-			<%= render @event.artists %>
-			<br><br>
-			<% if @event.works.any? %>
-			Werke:<br>
-				<%= render :partial => 'works/full_work', :collection => @event.works %>
-			<br><br>
-			<% end %> 
-			Start:<br>
-			<%= @event.time.strftime("%a, %b %d, %H:%I Uhr") %>
-			<br><br><br>
-			Ort:<br>
+			<br>
 			<%= link_to @event.venue.name, @event.venue %>
 			<br>
 			<%= @event.venue.address %> <%= link_to "(Map)","http://maps.google.de/maps?q=#{@event.venue.address}+Berlin" %>
 			<br>
 			<%= link_to @event.venue.url, "http://#{@event.venue.url}" %>
 			<br><br>
-			<%= "Preis: " + @event.price if @event.price != "" %>
+			<%if @event.price != "" %>
+				<%= "Preis: " + @event.price %>
+				<br><br>
+			<%end%>
+			<%= @event.time.strftime("%a, %b %d, %H:%I Uhr") %>
 			<br><br>
+			Künstler:<br>
+			<%= render @event.artists %>
+			<br><br>
+			<% if @event.works.any? %>
+			Werke:<br>
+				<%= render :partial => 'works/full_work', :collection => @event.works %>
+			<br>
+			<% end %> 
+			
 		</div>
+<% if @same_artists_events.any? %>
+<div class= "same_categories_events">
+		<div class = "event_bar">
+			<div class="span10">
+				Mehr Konzerte von <%= (link_to @event.artists.first.name, @event.artists.first) + more_linked_event_titles(@event) %> in Berlin:
+				
+			</div>
+		</div>
+		<br><br><br>
 
+
+	<table class="table table-striped">
+	  <tbody>
+		<%= render :partial => 'very_short_event', :collection => @same_artists_events %>
+	</tbody>
+	</table>
+<%end%>		
+
+</div>
+
+</div>
+<% if @same_categories_events.any? %>
+<div class = "span4">
+		Mehr <%= link_to @event.categories.first.name, @event.categories.first %><%= render @event.categories.drop(1) %> Konzerte in Berlin:
+		<br><br><br>
+			<table class="table table-striped">
+	  <tbody>
+		<%= render :partial => 'very_short_event', :collection => @same_categories_events %>
+			</tbody>
+	</table>
+</div>
+<%end%>
+	
+
+
+
+	
+
+
+	

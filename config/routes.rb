@@ -6,6 +6,7 @@ StageLy::Application.routes.draw do
   resources :artists
   resources :venues
   resources :works
+  resources :categories
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,15 @@
+<div class = "short_event_listing" onclick="location.href='<%=event_path(short_event)%>';" style="cursor:pointer">
+
+	<div class="span6">
+		<%= render short_event.artists %>
+	</div>
+	<div class="span3">
+		<%= link_to short_event.venue.name, short_event.venue  %>
+	</div>
+	<div class="span3">
+		<%= short_event.time.strftime("%b %d") %>
+	</div>
+
+	
+</div>
+<br><br><br><br>

@@ -5,14 +5,19 @@
 	<div class="span4">
 		Künstler
 	</div>
-	<div class="span2">
+	<div class="span3">
 		Komponisten
 	</div>
-	<div class="span2">
+	<div class="span3">
 		Ort
 	</div>
 	<div class="span2">
 		Beginn
 	</div>
-	<%= render @events %>
+		<table class="table table-striped">
+	  <tbody>
+		<%= render @events %>
+	  </tbody>
+	</table>
+	
 

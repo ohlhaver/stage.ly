@@ -1,9 +1,11 @@
+<tr>
+        <td>
 <div class = "event_listing" onclick="location.href='<%=event_path(event)%>';" style="cursor:pointer">
 	
 	<div class="span4">
 		<%= render event.artists %>
 	</div>
-	<div class="span2">
+	<div class="span3">
 		<% if event.works.first %>
 			<%= render event.works %>
 			<%else%>
@@ -12,7 +14,7 @@
 
 		
 	</div>
-	<div class="span2">
+	<div class="span3">
 		<%= link_to event.venue.name, event.venue unless params[:controller] == "venues"%>
 	</div>
 	<div class="span2">
@@ -20,5 +22,7 @@
 	</div>
 	
 </div>
-<br>
+</td>
+</tr>
+
 

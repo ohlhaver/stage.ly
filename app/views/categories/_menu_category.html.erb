@@ -1,6 +1,6 @@
 <br><br>
-<% if menu_category.id == params[:category].to_i %>
+<% if menu_category.id == params[:id].to_i && params[:controller] == "categories" %>
 	<%= menu_category.name %>
 <% else %> 
-<%=link_to menu_category.name, :controller => "events", :action => "index", :category => menu_category.id %>
+<%=link_to menu_category.name, menu_category %>
 <% end %>

@@ -19,6 +19,13 @@ body {
 
 }
 
+footer {
+	font-size: 12px;
+	margin-top: 40px;
+
+
+}
+
 .fb-like {
 	margin-top: 17px;
 }
@@ -41,14 +48,28 @@ body {
 
 .event_listing {
 	
-	padding-top: 60px;
 			
 
 }
 
+.short_event_listing {
+	
+			
+
+}
+
+.very_short_event_listing {
+	
+  
+
+}
+
+
+
 .event_details {
 	
-
+background-color: whitesmoke;
+padding: 10px;
 }
 
 
@@ -63,3 +84,9 @@ body {
 .event_bar {
 
 }
+
+.same_categories_events {
+	margin-top: 60px;
+	
+}
+
