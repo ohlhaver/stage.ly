@@ -31,7 +31,7 @@
 <div class= "same_categories_events">
 		<div class = "event_bar">
 			<div class="span10">
-				Mehr Konzerte von <%= (link_to @event.artists.first.name, @event.artists.first) + more_linked_event_titles(@event) %> in Berlin:
+				Andere Konzerte von <%= (link_to @event.artists.first.name, @event.artists.first) + more_linked_event_titles(@event) %> in Berlin:
 				
 			</div>
 		</div>
@@ -50,12 +50,12 @@
 </div>
 <% if @same_categories_events.any? %>
 <div class = "span4">
-		Mehr <%= link_to @event.categories.first.name, @event.categories.first %><%= render @event.categories.drop(1) %> Konzerte in Berlin:
+		Andere <%= link_to @event.categories.first.name, @event.categories.first %><%= render @event.categories.drop(1) %> Konzerte in Berlin:
 		<br><br><br>
-			<table class="table table-striped">
+	<table class="table table-striped">
 	  <tbody>
 		<%= render :partial => 'very_short_event', :collection => @same_categories_events %>
-			</tbody>
+	  </tbody>
 	</table>
 </div>
 <%end%>
