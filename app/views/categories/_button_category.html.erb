@@ -1,0 +1,2 @@
+
+<% if button_category.id == params[:id].to_i  && params[:controller] == "categories" %> - <%= button_category.name%><% else %> - <%=link_to button_category.name, button_category %><% end %>

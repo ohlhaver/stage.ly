@@ -14,8 +14,10 @@
 
 		
 	</div>
-	<div class="span3">
-		<%= link_to event.venue.name, event.venue unless params[:controller] == "venues"%>
+	<div class="hidden-phone">
+		<div class="span3">
+			<%= link_to event.venue.name, event.venue unless params[:controller] == "venues"%>
+		</div>
 	</div>
 	<div class="span2">
 		<%= event.time.strftime("%a, %b %d, %H:%I Uhr") %>

@@ -1,30 +1,63 @@
-<% provide :title, @event.artists.first.name + more_event_titles(@event) + " @ " + @event.venue.name + " on " + @event.time.strftime("%a, %b %d")  %>
+<% provide :title, @event.artists.first.name + more_event_titles(@event) + " @ " + @event.venue.name %>
 <% provide :page_title, @event.artists.first.name + more_event_titles(@event) + " @ " + @event.venue.name %>
 <% provide :keywords, @event.artists.first.name + more_event_titles(@event) + ", " + @event.venue.name %>
 
-<div class = "span6">
+<div class = "span8">
 		<div class= "event_details">
 			<br>
-			<%= link_to @event.venue.name, @event.venue %>
+			<div class ="event_details_item"%>
+				<div class="hidden-phone"><div class ="span1"><i class="icon-calendar"></i> </div></div>
+				<div class ="span11">
+				<%= @event.time.strftime("%a, %b %d, %H:%I Uhr") %>
+				</div>
+			</div>
 			<br>
-			<%= @event.venue.address %> <%= link_to "(Map)","http://maps.google.de/maps?q=#{@event.venue.address}+Berlin" %>
-			<br>
-			<%= link_to @event.venue.url, "http://#{@event.venue.url}" %>
-			<br><br>
-			<%if @event.price != "" %>
-				<%= "Preis: " + @event.price %>
-				<br><br>
+			
+			<div class ="event_details_item"%>
+				<div class="hidden-phone"><div class ="span1"><i class="icon-map-marker"></i> </div></div>
+				<div class ="span11">
+					<%= link_to @event.venue.name, @event.venue %>
+					<br>
+					<%= @event.venue.address %> <%= link_to "(Map)","http://maps.google.de/maps?q=#{@event.venue.address}+Berlin" %>
+					<br>
+					<%= link_to @event.venue.url, "http://#{@event.venue.url}" %>
+					
+				</div>
+			</div>
+			<div class="hidden-phone"><br><br></div><br>
+			
+
+			<%if @event.price != "" %>		
+				<div class ="event_details_item"%>	
+					<div class="hidden-phone"><div class ="span1"><i class="icon-shopping-cart"></i> </div></div>
+					<div class ="span11">
+						<%= "Preis: " + @event.price %>
+					</div>
+				</div>
+				<br>
 			<%end%>
-			<%= @event.time.strftime("%a, %b %d, %H:%I Uhr") %>
-			<br><br>
-			Künstler:<br>
-			<%= render @event.artists %>
-			<br><br>
+			<div class ="event_details_item"%>
+				<div class="hidden-phone"><div class ="span1"><i class="icon-user"></i> </div></div>
+				<div class ="span11">
+					Künstler:<br>
+					<%= render @event.artists %>
+				</div>
+			</div>
+			<div class="hidden-phone"><br><br></div><br>
+
 			<% if @event.works.any? %>
-			Werke:<br>
-				<%= render :partial => 'works/full_work', :collection => @event.works %>
-			<br>
+				<div class ="event_details_item"%>
+					<div class="hidden-phone"><div class ="span1"><i class="icon-book"></i> </div></div>
+					<div class ="span11">
+					Werke:<br>
+						<%= render :partial => 'works/full_work', :collection => @event.works %>
+					</div>
+				</div>
+				<div class="hidden-phone"><br><br></div><br>
 			<% end %> 
+
+
+			
 			
 		</div>
 <% if @same_artists_events.any? %>

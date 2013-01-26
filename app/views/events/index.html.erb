@@ -2,11 +2,30 @@
 <% provide :page_title, @category.name + " in Berlin" if @category %>
 <% provide :keywords, @category.name if @category %>
 
+<div class="visible-phone">
+	<div class="mobile_category_menu">
+		
+		
+					<%# if params[:action] == "index" or params[:controller] == "categories" %>
+						<% unless params[:controller] == "events" && params[:action] == "index" %>
+							<%= link_to "Alle", root_path %>
+							<%else%>
+							<%= "Alle" %>
+							<%end%>
+							
+						<%= render :partial => 'categories/button_category', :collection => categories %>
+					<%#end%>
+		
+	</div>
+</div>
+
+
+<div class="hidden-phone">
 	<div class="span4">
 		Künstler
 	</div>
 	<div class="span3">
-		Komponisten
+		Werke
 	</div>
 	<div class="span3">
 		Ort
@@ -14,6 +33,7 @@
 	<div class="span2">
 		Beginn
 	</div>
+</div>
 		<table class="table table-striped">
 	  <tbody>
 		<%= render @events %>

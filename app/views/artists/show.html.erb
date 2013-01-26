@@ -2,6 +2,7 @@
 <% provide :page_title, @artist.name + " in Berlin" if @artist %>
 <% provide :keywords, @artist.name %>
 
+<div class="hidden-phone">
 	<div class="span4">
 		Künstler
 	</div>
@@ -14,6 +15,7 @@
 	<div class="span2">
 		Beginn
 	</div>
+</div>
 	<table class="table table-striped">
 	  <tbody>
 		<%= render @events %>

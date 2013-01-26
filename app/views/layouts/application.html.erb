@@ -34,11 +34,7 @@
 								<%= full_slogan(yield(:title)) %>
 							</div>
 						</div>
-						<div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div>
-
-							
-						
-					
+						<div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div>					
 					<%else%>
 						<div class ="span3">
 						<div class='slogan'>
@@ -54,11 +50,12 @@
 		</div>
 	</header>
  <div class="container-fluid">
-	<div class="row-fluid">
-	 	<div class="span2">
+	<div class="row-fluid"> 
+		 <div class="hidden-phone">
+		<div class="span2">
 			<div class="category_menu">
 				<%# if params[:action] == "index" or params[:controller] == "categories" %>
-					<% if params[:controller] == "categories" %>
+					<% unless params[:controller] == "events" && params[:action] == "index" %>
 						<%= link_to "Alle", root_path %>
 						<%else%>
 						<%= "Alle" %>
@@ -67,10 +64,11 @@
 					<%= render :partial => 'categories/menu_category', :collection => categories %>
 				<%#end%>
 			</div>
-		</div>
+		</div> 	
+	</div>
 		<div class="span8">
 			<%= yield %>
-		</div>    
+		</div> 
 	</div>
 </div>
 
