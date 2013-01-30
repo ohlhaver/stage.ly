@@ -3,7 +3,9 @@
 <% provide :keywords, @event.artists.first.name + more_event_titles(@event) + ", " + @event.venue.name %>
 
 <div class = "span8">
+	<div class="row-fluid">
 		<div class= "event_details">
+
 			<br>
 			<div class ="event_details_item"%>
 				<div class="hidden-phone"><div class ="span1"><i class="icon-calendar"></i> </div></div>
@@ -60,27 +62,27 @@
 			
 			
 		</div>
-<% if @same_artists_events.any? %>
-<div class= "same_categories_events">
-		<div class = "event_bar">
-			<div class="span10">
-				Andere Konzerte von <%= (link_to @event.artists.first.name, @event.artists.first) + more_linked_event_titles(@event) %> in Berlin:
-				
-			</div>
+	<% if @same_artists_events.any? %>
+		<div class= "same_categories_events">
+				<div class = "event_bar">
+					<div class="span10">
+						Andere Konzerte von <%= (link_to @event.artists.first.name, @event.artists.first) + more_linked_event_titles(@event) %> in Berlin:
+						
+					</div>
+				</div>
+				<br><br><br>
+
+
+				<table class="table table-striped">
+				  <tbody>
+					<%= render :partial => 'very_short_event', :collection => @same_artists_events %>
+				</tbody>
+				</table>
 		</div>
-		<br><br><br>
-
-
-	<table class="table table-striped">
-	  <tbody>
-		<%= render :partial => 'very_short_event', :collection => @same_artists_events %>
-	</tbody>
-	</table>
-<%end%>		
-
+	<%end%>	
+	</div>	
 </div>
 
-</div>
 <% if @same_categories_events.any? %>
 <div class = "span4">
 		Andere <%= link_to @event.categories.first.name, @event.categories.first %><%= render @event.categories.drop(1) %> Konzerte in Berlin:
