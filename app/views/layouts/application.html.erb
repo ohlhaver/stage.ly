@@ -3,7 +3,7 @@
 <head>
   <title><%= full_slogan(yield(:page_title)) %> - stage.ly</title>
    <meta name="description" content="<%= full_slogan(yield(:page_title)) %>"/>     
-    <meta name="keywords" content="<%= yield(:keywords) + ", " + "Berlin, Konzerte, Concerts"%>"/>
+    <meta name="keywords" content="<%= yield(:keywords) + ", " + "Lübeck, Konzerte, Concerts"%>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -46,20 +46,8 @@
  <div class="container-fluid">
 	<div class="row-fluid"> 
 		 <div class="hidden-phone">
-		<div class="span2">
-			<div class="category_menu">
-				<%# if params[:action] == "index" or params[:controller] == "categories" %>
-					<% unless params[:controller] == "events" && params[:action] == "index" %>
-						<%= link_to "Alle", root_path %>
-						<%else%>
-						<%= "Alle" %>
-						<%end%>
-						
-					<%= render :partial => 'categories/menu_category', :collection => categories %>
-				<%#end%>
-			</div>
-		</div> 	
-	</div>
+		 	<%= render 'layouts/menu'%>	
+		</div>
 		<div class="span8">
 			<div class="row-fluid">
 				<%= yield %>

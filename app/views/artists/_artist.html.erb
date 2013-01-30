@@ -1,5 +1,2 @@
 <%= link_to artist.name, artist %>
- <% if artist.categories.first %>
-(<% if artist.categories.first.id == params[:id].to_i && params[:controller] == "categories" %><%= artist.categories.first.name %><% else %><%=link_to artist.categories.first.name, artist.categories.first %><% end %><%= render artist.categories.drop(1)%>) 
-<%end%>
 <br>

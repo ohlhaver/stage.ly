@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :price, :time, :url, :venue_id, :title, :artist_ids
+  attr_accessible :price, :time, :url, :venue_id, :title, :artist_ids, :type_id
   has_many :performances
   has_many :artists, through: :performances
   has_many :categories, through: :artists
@@ -8,6 +8,7 @@ class Event < ActiveRecord::Base
   has_many :composers, through: :works
 
   belongs_to :venue
+  belongs_to :type
   before_save :generate_title
 
 

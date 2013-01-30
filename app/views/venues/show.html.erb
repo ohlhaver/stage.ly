@@ -2,17 +2,16 @@
 <% provide :title, @venue.name%>
 <% provide :keywords, @venue.name %>
 
-	<%= @venue.address %> <%= link_to "(Karte)","http://maps.google.de/maps?q=#{@venue.address}+Berlin" %>
+	<%= @venue.address %> <%= link_to "(Karte)","http://maps.google.de/maps?q=#{@venue.address}+Lübeck" %>
 	<br>
 	<%= link_to @venue.url, "http://#{@venue.url}" %>
 	<br><br><br>
 <div class="hidden-phone">
-	<div class = "event_bar">
-	<div class="span4">
-		Künstler
+	<div class="span3">
+		Wer
 	</div>
-	<div class="span4">
-		Komponisten
+	<div class="span7">
+		Was
 	</div>
 	<div class="span2">
 		Beginn

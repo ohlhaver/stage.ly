@@ -4,10 +4,11 @@
 
 <div class = "span8">
 	<div class="row-fluid">
-		<div class= "event_details">
+		
 
 			<br>
-			<div class ="event_details_item"%>
+			
+			<div class ="event_details_item">
 				<div class="hidden-phone"><div class ="span1"><i class="icon-calendar"></i> </div></div>
 				<div class ="span11">
 				<%= @event.time.strftime("%a, %b %d, %H:%M Uhr") %>
@@ -15,12 +16,12 @@
 			</div>
 			<br>
 			
-			<div class ="event_details_item"%>
+			<div class ="event_details_item">
 				<div class="hidden-phone"><div class ="span1"><i class="icon-map-marker"></i> </div></div>
 				<div class ="span11">
 					<%= link_to @event.venue.name, @event.venue %>
 					<br>
-					<%= @event.venue.address %> <%= link_to "(Map)","http://maps.google.de/maps?q=#{@event.venue.address}+Berlin" %>
+					<%= @event.venue.address %> <%= link_to "(Map)","http://maps.google.de/maps?q=#{@event.venue.address}+Lübeck" %>
 					<br>
 					<%= link_to @event.venue.url, "http://#{@event.venue.url}" %>
 					
@@ -30,7 +31,7 @@
 			
 
 			<%if @event.price != "" %>		
-				<div class ="event_details_item"%>	
+				<div class ="event_details_item">	
 					<div class="hidden-phone"><div class ="span1"><i class="icon-shopping-cart"></i> </div></div>
 					<div class ="span11">
 						<%= "Preis: " + @event.price %>
@@ -38,17 +39,18 @@
 				</div>
 				<br>
 			<%end%>
-			<div class ="event_details_item"%>
+			<div class ="event_details_item">
 				<div class="hidden-phone"><div class ="span1"><i class="icon-user"></i> </div></div>
 				<div class ="span11">
 					Künstler:<br>
 					<%= render @event.artists %>
+
 				</div>
 			</div>
 			<div class="hidden-phone"><br><br></div><br>
 
 			<% if @event.works.any? %>
-				<div class ="event_details_item"%>
+				<div class ="event_details_item">
 					<div class="hidden-phone"><div class ="span1"><i class="icon-book"></i> </div></div>
 					<div class ="span11">
 					Werke:<br>
@@ -57,16 +59,17 @@
 				</div>
 				<div class="hidden-phone"><br><br></div><br>
 			<% end %> 
+		<li></li>
 
 
 			
 			
-		</div>
+		
 	<% if @same_artists_events.any? %>
 		<div class= "same_categories_events">
 				<div class = "event_bar">
 					<div class="span10">
-						Andere Konzerte von <%= (link_to @event.artists.first.name, @event.artists.first) + more_linked_event_titles(@event) %> in Berlin:
+						Andere Konzerte von <%= (link_to @event.artists.first.name, @event.artists.first) + more_linked_event_titles(@event) %> in Lübeck:
 						
 					</div>
 				</div>
@@ -85,7 +88,7 @@
 
 <% if @same_categories_events.any? %>
 <div class = "span4">
-		Andere <%= link_to @event.categories.first.name, @event.categories.first %><%= render @event.categories.drop(1) %> Konzerte in Berlin:
+		Andere <%= link_to @event.categories.first.name, @event.categories.first %><%= render @event.categories.drop(1) %> Konzerte in Lübeck:
 		<br><br><br>
 	<table class="table table-striped">
 	  <tbody>

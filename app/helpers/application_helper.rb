@@ -1,7 +1,10 @@
+#!/bin/env ruby
+# encoding: utf-8
+
 module ApplicationHelper
 
 	def full_slogan(page_title)
-	    base_title = "Konzerte in Berlin"
+	    base_title = "Alle Veranstaltungen in Lübeck"
 	    if page_title.empty?
 	      base_title
 	    else
@@ -11,5 +14,9 @@ module ApplicationHelper
 
  	def categories
  		categories = Category.all.sort_by &:name
+ 	end
+
+ 	def types
+ 		types = Type.all.sort_by &:name
  	end
 end

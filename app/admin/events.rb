@@ -30,6 +30,7 @@ ActiveAdmin.register Event do
 	   @event = Event.find(params[:id])
 			attributes_table do
 		        row :id
+		        row :type
 		        row :title
 		        row :venue
 		        row :time
@@ -58,6 +59,7 @@ ActiveAdmin.register Event do
 
      form do |f|
 	    f.inputs "Event" do
+	      f.input :type
 	      f.input :venue
 	      f.input :time
 	      f.input :price
