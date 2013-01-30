@@ -54,7 +54,13 @@
 	</header>
  <div class="container-fluid">
 	<div class="row-fluid"> 
-		 <div class="hidden-phone">
+		
+		<div class="span8">
+			<div class="row-fluid">
+				<%= yield %>
+			</div>
+		</div> 
+
 		<div class="span2">
 			<div class="category_menu">
 				<%# if params[:action] == "index" or params[:controller] == "categories" %>
@@ -68,12 +74,6 @@
 				<%#end%>
 			</div>
 		</div> 	
-	</div>
-		<div class="span8">
-			<div class="row-fluid">
-				<%= yield %>
-			</div>
-		</div> 
 	</div>
 </div>
 
