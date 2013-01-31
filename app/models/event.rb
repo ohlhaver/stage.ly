@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :price, :time, :url, :venue_id, :title, :artist_ids, :type_id
+  attr_accessible :price, :time, :url, :venue_id, :title, :artist_ids, :type_id, :work_ids
   has_many :performances
   has_many :artists, through: :performances
   has_many :categories, through: :artists

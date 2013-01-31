@@ -1,11 +1,15 @@
 class EventsController < ApplicationController
 	def index
 		if params[:q]
-			@events = Event.search params[:q], :match_mode => :any, :order => :time,
-	  :sort_mode => :asc
+				@events = Event.search params[:q], :match_mode => :any, :order => :time,
+		  :sort_mode => :asc
 	  	else
-		@events = Event.all.sort_by(&:time)
+			@events = Event.all.sort_by(&:time)
 		end
+
+		@events = Kaminari.paginate_array(@events).page(params[:page]).per(50)
+
+
 		#if params[:category]
 		#	@category = Category.find(params[:category])
 		#	@events = @category.events.sort_by(&:time)
@@ -23,6 +27,8 @@ class EventsController < ApplicationController
 			@same_artists_events += (artist.events - Array.wrap(@event))
 		end
 		@same_artists_events = @same_artists_events.uniq.sort_by(&:time).first(10)
+
+		@event_categories = @event.categories.uniq
 
 		@same_categories_events = []
 			@event.categories.each do |category|

@@ -92,7 +92,7 @@
 
 <% if @same_categories_events.any? %>
 <div class = "span4">
-		Andere <%= link_to @event.categories.first.name, @event.categories.first %><%= render @event.categories.drop(1) %> Veranstaltungen in Lübeck:
+		Andere <%= link_to @event_categories.first.name, @event_categories.first %><%= render @event_categories.drop(1) %> Veranstaltungen in Lübeck:
 		<br><br><br>
 	<table class="table table-striped">
 	  <tbody>

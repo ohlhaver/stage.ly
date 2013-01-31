@@ -57,7 +57,7 @@ ActiveAdmin.register Event do
 
   end
 
-     form do |f|
+    form do |f|
 	    f.inputs "Event" do
 	      f.input :type
 	      f.input :venue
@@ -65,11 +65,14 @@ ActiveAdmin.register Event do
 	      f.input :price
 	      f.input :url
 	    end
-	    f.inputs "Artists" do
-	      
+	    f.inputs "Artists" do 
 	      f.input :artists
 	    end
+
+	    f.inputs "Works" do 
+	      f.input :works
+	    end
 	    f.buttons
-  end
+  	end
   
 end
