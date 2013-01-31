@@ -1,0 +1,13 @@
+<div class="span2">
+			<div class="category_menu">
+				<%# if params[:action] == "index" or params[:controller] == "categories" %>
+					<% unless params[:controller] == "events" && params[:action] == "index" %>
+						<%= link_to "Alles", root_path %>
+						<%else%>
+						<%= "Alles" %>
+						<%end%>
+						
+					<%= render :partial => 'types/type', :collection => types %>
+				<%#end%>
+			</div>
+</div> 	

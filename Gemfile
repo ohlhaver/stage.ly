@@ -8,7 +8,7 @@ gem 'rails', '3.2.11'
 
 
 group :development do
-  gem 'sqlite3', '1.3.7'
+  gem 'pg', '0.12.2'
 end
 
 group :production do
@@ -50,3 +50,6 @@ gem 'jquery-rails'
  gem "meta_search",    '>= 1.1.0.pre'
 
  gem 'bootstrap-sass', '~> 2.0.4.0'
+
+gem 'thinking-sphinx', '2.0.11'
+gem 'flying-sphinx',   '0.8.4'

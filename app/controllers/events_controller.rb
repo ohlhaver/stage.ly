@@ -1,6 +1,11 @@
 class EventsController < ApplicationController
 	def index
+		if params[:q]
+			@events = Event.search params[:q], :match_mode => :any, :order => :time,
+	  :sort_mode => :asc
+	  	else
 		@events = Event.all.sort_by(&:time)
+		end
 		#if params[:category]
 		#	@category = Category.find(params[:category])
 		#	@events = @category.events.sort_by(&:time)

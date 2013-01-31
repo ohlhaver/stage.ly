@@ -1,1 +1,4 @@
-<%= full_work.name %> von <%= render full_work.composers %> <br>
+<%= full_work.name %>
+<% if full_work.composers.any? %>
+ von <%= render full_work.composers %>
+ <% end %> 

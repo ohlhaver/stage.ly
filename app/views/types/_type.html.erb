@@ -1,0 +1,17 @@
+<br><br>
+<% if type.id == params[:type].to_i or (type.id == params[:id].to_i && params[:controller] == "types") %>
+	<% if params[:controller] == "categories"%>
+		<%=link_to type.name, type %>
+	<%else%> 
+		<%= type.name %>
+	<%end%>
+	<div class = "sub_categories">
+	<div class="container-fluid">
+	<div class ="span8 offset4">		
+	<%= render :partial => 'categories/menu_category', :collection => @type_categories %>
+	</div>
+	</div>
+	</div>
+<% else %> 
+	<%=link_to type.name, type %>
+<% end %>

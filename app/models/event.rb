@@ -11,7 +11,16 @@ class Event < ActiveRecord::Base
   belongs_to :type
   before_save :generate_title
 
+  define_index do
+    indexes artists.name, :as => :artists
+    indexes venue.name, :as => :venue
+    indexes categories.name, :as => :categories
+    indexes works.name, :as => :works
+    indexes composers.name, :as => :composers
 
+    has time
+    
+  end
   #belongs_to :artist, :polymorphic => true
 
   def generate_title

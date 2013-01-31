@@ -16,13 +16,23 @@
 					</div>
 				<% end %> 
 			</div>
-			<div class = "offset2 span4">
+			<div class = "span3">
+			</div>
+			<div class = "span3">
 				<% if params[:controller] == "events" %>
 					<%= link_to event.type.singular, event.type if event.type %>
 				<%elsif params[:controller] == "types" or params[:controller] == "venues" %>
-					<% if event.categories.uniq.first %>
-						<% if event.categories.uniq.first.id == params[:id].to_i && params[:controller] == "categories" %><%= event.categories.uniq.first.name %><% else %><%=link_to event.categories.uniq.first.name, event.categories.uniq.first %><% end %><%= render event.categories.uniq.drop(1)%> 
-					<%end%>
+					<% if work_categories(event) && work_categories(event).uniq.first %>
+							<% if work_categories(event).uniq.first.id == params[:id].to_i && params[:controller] == "categories" %><%= work_categories(event).uniq.first.name %><% else %><%=link_to work_categories(event).uniq.first.name, work_categories(event).uniq.first %><% end %><%= render work_categories(event).uniq.drop(1)%> 
+						<%else%>
+
+
+							<% if event.categories.uniq.first %>
+								<% if event.categories.uniq.first.id == params[:id].to_i && params[:controller] == "categories" %><%= event.categories.uniq.first.name %><% else %><%=link_to event.categories.uniq.first.name, event.categories.uniq.first %><% end %><%= render event.categories.uniq.drop(1)%> 
+							<%end%>
+						<%end%>
+					
+
 				<%end%>
 			</div>
 		</div>

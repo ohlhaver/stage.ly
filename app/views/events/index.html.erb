@@ -1,5 +1,7 @@
 <% provide :title, @category.name + " in Lübeck" if @category %>
+<% provide :title, params[:q].capitalize + " in Lübeck" if params[:q] %>
 <% provide :page_title, @category.name + " in Lübeck" if @category %>
+<% provide :page_title, params[:q].capitalize + " in Lübeck" if params[:q] %>
 <% provide :keywords, @category.name if @category %>
 
 <div class="visible-phone">

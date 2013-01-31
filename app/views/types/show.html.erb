@@ -1,0 +1,25 @@
+<% provide :title, @type.name + " in Lübeck" %>
+<% provide :page_title, @type.name + " in Lübeck" %>
+<% provide :keywords, @type.name %>
+
+<div class="hidden-phone">
+<div class="hidden-phone">
+	<div class="span3">
+		Wer
+	</div>
+	<div class="span5">
+		Was
+	</div>
+	<div class="span2">
+		Ort
+	</div>
+	<div class="span2">
+		Beginn
+	</div>
+</div>
+</div>
+	<table class="table table-striped">
+	  <tbody>
+		<%= render @events %>
+	  </tbody>
+	</table>

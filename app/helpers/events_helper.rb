@@ -14,4 +14,17 @@ module EventsHelper
 		""
 		end	
 	end
+
+	def work_categories(event)
+		if event.works.any?
+			cats=[]
+			event.works.each do |work|
+				cats += Array.wrap(work.category) if work.category
+			end
+			return cats
+		end
+	end
+
+		
+
 end
