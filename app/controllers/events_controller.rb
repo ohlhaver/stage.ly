@@ -32,7 +32,7 @@ class EventsController < ApplicationController
 
 		@same_categories_events = []
 			@event.categories.each do |category|
-				@same_categories_events += (category.events - Array.wrap(@event))
+				@same_categories_events += (category_events(category) - Array.wrap(@event))
 			end
 		@same_categories_events = @same_categories_events.uniq.sort_by(&:time).first(10)
 
