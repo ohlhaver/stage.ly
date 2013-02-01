@@ -1,26 +1,24 @@
-	<div class="span2">
-		Wer
-	</div>
-	<div class="span2">
+	<div class="span4">
 		Was
+
 	</div>
 	
-	<% unless params[:controller] == "types" or params[:controller] == "categories" %>
+	
 		<div class="span2">
 			
 		</div>
-	<%end%>
+	
 
-	<% unless params[:controller] == "categories" or params[:controller] == "events" or params[:controller] == "works" %>
+	<% unless params[:controller] == "categories" %>
 		<div class="span2">
 			
 		</div>
 	<%end%>
-	<% unless params[:controller] == "venues"%>
+	
 		<div class="span2">
-			Ort
+			<% unless params[:controller] == "venues"%>Ort<%end%>
 		</div>
-	<%end%>
+	
 	<div class="span2">
 		Beginn
 	</div>

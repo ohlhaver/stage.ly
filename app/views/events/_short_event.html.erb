@@ -3,18 +3,16 @@
 
 <div class = "short_event_listing" onclick="location.href='<%=event_path(short_event)%>';" style="cursor:pointer">
 
-	<div class="span5">
-		<%= render short_event.artists %>
+	<div class="span8">
+		<% if short_event.works.any? %>
+			<%= render :partial => 'works/full_work', :collection => short_event.works %>
+		<%else%>
+			<%= render short_event.artists %>
+		<%end%>
 	</div>
-	<div class="span5">
-		<% if short_event.works.any? %>		
-			
-				<%= render :partial => 'works/full_work', :collection => short_event.works %>
-			
-		<% end %> 
-	</div>
-	<div class="span2">
-		<%= short_event.time.strftime("%b %d") %>
+
+	<div class="span4">
+		<%= short_event.time.strftime("%H:%M Uhr, %b %d") %>
 	</div>
 
 	

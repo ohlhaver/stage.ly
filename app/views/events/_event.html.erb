@@ -1,23 +1,30 @@
 <tr>
         <td>
 <div class = "event_listing" onclick="location.href='<%=event_path(event)%>';" style="cursor:pointer">
-	
-	<div class="span2">
-		<%= render event.artists %>
+	<div class ="span6">
+		<div class="row-fluid">
+			<% unless params[:controller] == "works" %>
+				<% if event.works.any? %>	
+					<div class="span6">
+							
+							<div class ="event_details_item"%>	
+								<%= render :partial => 'works/full_work', :collection => event.works %>
+							</div>						
+					</div>
+				<% end %> 
+			<% end %>
+
+
+			<div class="span6">
+				<%= render event.artists %>
+			</div>
+		</div>
 	</div>
 
-	<% unless params[:controller] == "works" %>
-		<div class="span2">
-			<% if event.works.any? %>		
-				<div class ="event_details_item"%>	
-					<%= render :partial => 'works/full_work', :collection => event.works %>
-				</div>
-			<% end %> 						
-		</div>
-	<% end %>
 
 
-	<% unless params[:controller] == "types" or params[:controller] == "categories" %>
+
+	<% unless params[:controller] == "types" or params[:controller] == "categories" or params[:controller] == "artists" %>
 		<div class="span2">
 			<%= link_to event.type.singular, event.type %>
 		</div>
@@ -25,7 +32,7 @@
 
 
 
-<% unless params[:controller] == "categories" or params[:controller] == "events"%>
+<% unless params[:controller] == "categories" or params[:controller] == "events" or params[:controller] == "works"%>
 		<div class="span2">
 
 				<% if work_categories(event) && work_categories(event).uniq.first %>
@@ -50,7 +57,7 @@
 	<%end%>
 
 	<div class="span2">
-		<%= event.time.strftime("%a, %b %d, %H:%M Uhr") %>
+		<%= event.time.strftime("%a %H:%M Uhr, %b %d") %>
 	</div>
 	
 </div>
