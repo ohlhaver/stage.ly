@@ -1,22 +1,21 @@
 <% provide :title, event_title(@event) + " @ " + @event.venue.name %>
 <% provide :page_title, event_title(@event) + " @ " + @event.venue.name %>
-<% provide :keywords, @event.artists.first.name + more_event_titles(@event) + ", " + @event.venue.name %>
+<% (provide :keywords, @event.artists.first.name + more_event_titles(@event) + ", " + @event.venue.name) if @event.artists.any? %>
 
 <div class = "span8">
 	<div class="row-fluid">
 		
 
 			<br>
-
-			<div class ="event_details_item">
-				<div class="hidden-phone"><div class ="span1"><i class="icon-user"></i> </div></div>
-				<div class ="span11">
-					
-					<%= render @event.artists %>
-
+			<% if @event.artists.any? %>
+				<div class ="event_details_item">
+					<div class="hidden-phone"><div class ="span1"><i class="icon-user"></i> </div></div>
+					<div class ="span11">
+						<%= render @event.artists %>
+					</div>
 				</div>
-			</div>
-			<div class="hidden-phone"><br><br></div>
+				<div class="hidden-phone"><br><br></div>
+			<% end %>
 
 			<% if @event.works.any? %>
 				<div class ="event_details_item">
