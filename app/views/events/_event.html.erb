@@ -1,6 +1,6 @@
-<tr>
+<tr onclick="location.href='<%=event_path(event)%>';" style="cursor:pointer">
         <td>
-<div class = "event_listing" onclick="location.href='<%=event_path(event)%>';" style="cursor:pointer">
+<div id = "event_listing" >
 	<div class ="span6">
 		<div class="row-fluid">
 			<% unless params[:controller] == "works" %>

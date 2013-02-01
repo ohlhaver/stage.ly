@@ -1,7 +1,7 @@
-<tr>
+<tr onclick="location.href='<%=event_path(short_event)%>';" style="cursor:pointer">
         <td>
 
-<div class = "short_event_listing" onclick="location.href='<%=event_path(short_event)%>';" style="cursor:pointer">
+<div class = "short_event_listing">
 
 	<div class="span8">
 		<% if short_event.works.any? %>
