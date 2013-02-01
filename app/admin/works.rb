@@ -3,13 +3,16 @@ ActiveAdmin.register Work do
 	form do |f|
 	    f.inputs "Work" do
 	      f.input :name
-	      f.input :category
-
 	    end
-	    f.inputs "Composers" do
-	      
+	    f.inputs "Composers" do  
 	      f.input :composers
 	    end
+
+	    f.inputs "Categories" do 
+	      f.input :categories
+	    end
+
+
 	    f.buttons
   	end
 
@@ -18,7 +21,6 @@ ActiveAdmin.register Work do
 			attributes_table do
 		        row :id
 		        row :name
-		        row :category
 		        row :updated_at
 		        row :created_at
 	      	end
@@ -27,6 +29,13 @@ ActiveAdmin.register Work do
 			h5 "Composers"
 			column :title do |composer|
 		      link_to composer.name, admin_artist_path(composer) 
+		    end
+	    end
+
+	    table_for @work.categories do
+			h5 "Categories"
+			column :title do |category|
+		      link_to category.name, admin_category_path(category) 
 		    end
 	    end
 	end
