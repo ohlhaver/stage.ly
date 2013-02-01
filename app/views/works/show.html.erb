@@ -1,6 +1,6 @@
-<% provide :title, @type.name + " in Lübeck" %>
-<% provide :page_title, @type.name + " in Lübeck" %>
-<% provide :keywords, @type.name %>
+<% provide :title, @work.name + " in Lübeck" if @work %>
+<% provide :page_title, @work.name + " in Lübeck" if @work %>
+<% provide :keywords, @work.name %>
 
 <div class="hidden-phone">
 	<%= render :partial => 'events/label_bar'%>

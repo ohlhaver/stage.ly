@@ -2,52 +2,53 @@
         <td>
 <div class = "event_listing" onclick="location.href='<%=event_path(event)%>';" style="cursor:pointer">
 	
-	<div class="span3">
+	<div class="span2">
 		<%= render event.artists %>
 	</div>
 
-	<div class = "span5">
-		<div class="row-fluid">
-			
-			<div class = "span6">
-				<% if event.works.any? %>
-					<div class ="event_details_item"%>	
-							<%= render :partial => 'works/full_work', :collection => event.works %>
-					</div>
-				<% end %> 
-			</div>
-			<div class = "span3">
-			</div>
-			<div class = "span3">
-				<% if params[:controller] == "events" %>
-					<%= link_to event.type.singular, event.type if event.type %>
-				<%elsif params[:controller] == "types" or params[:controller] == "venues" %>
-					<% if work_categories(event) && work_categories(event).uniq.first %>
-							<% if work_categories(event).uniq.first.id == params[:id].to_i && params[:controller] == "categories" %><%= work_categories(event).uniq.first.name %><% else %><%=link_to work_categories(event).uniq.first.name, work_categories(event).uniq.first %><% end %><%= render work_categories(event).uniq.drop(1)%> 
-						<%else%>
-
-
-							<% if event.categories.uniq.first %>
-								<% if event.categories.uniq.first.id == params[:id].to_i && params[:controller] == "categories" %><%= event.categories.uniq.first.name %><% else %><%=link_to event.categories.uniq.first.name, event.categories.uniq.first %><% end %><%= render event.categories.uniq.drop(1)%> 
-							<%end%>
-						<%end%>
-					
-
-				<%end%>
-			</div>
+	<% unless params[:controller] == "works" %>
+		<div class="span2">
+			<% if event.works.any? %>		
+				<div class ="event_details_item"%>	
+					<%= render :partial => 'works/full_work', :collection => event.works %>
+				</div>
+			<% end %> 						
 		</div>
-	</div>	
+	<% end %>
+
+
+	<% unless params[:controller] == "types" or params[:controller] == "categories" %>
+		<div class="span2">
+			<%= link_to event.type.singular, event.type %>
+		</div>
+	<%end%>
 
 
 
+<% unless params[:controller] == "categories" or params[:controller] == "events"%>
+		<div class="span2">
 
-
+				<% if work_categories(event) && work_categories(event).uniq.first %>
+					<% if work_categories(event).uniq.first.id == params[:id].to_i && params[:controller] == "categories" %><%= work_categories(event).uniq.first.name %>
+					<% else %><%=link_to work_categories(event).uniq.first.name, work_categories(event).uniq.first %><% end %><%= render work_categories(event).uniq.drop(1)%> 
+				<% else %>
+					<% if event.categories.uniq.first %>
+							<% if event.categories.uniq.first.id == params[:id].to_i && params[:controller] == "categories" %><%= event.categories.uniq.first.name %>
+							<% else %>
+								<%=link_to event.categories.uniq.first.name, event.categories.uniq.first %><% end %><%= render event.categories.uniq.drop(1)%> 
+					<% end %>
+				<% end %>
+		</div>
+	<%end%>
 	
-	<div class="span2">
-			<div class="hidden-phone">
-				<%= link_to event.venue.name, event.venue unless params[:controller] == "venues"%>
-			</div>
-	</div>
+	<% unless params[:controller] == "venues"%>
+		<div class="span2">
+				<div class="hidden-phone">
+					<%= link_to event.venue.name, event.venue unless params[:controller] == "venues"%>
+				</div>
+		</div>
+	<%end%>
+
 	<div class="span2">
 		<%= event.time.strftime("%a, %b %d, %H:%M Uhr") %>
 	</div>

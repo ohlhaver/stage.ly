@@ -19,10 +19,18 @@ module EventsHelper
 		if event.works.any?
 			cats=[]
 			event.works.each do |work|
-				cats += Array.wrap(work.category) if work.category
+				cats += work.categories if work.categories
 			end
 			return cats
 		end
+	end
+
+	def event_title(event)
+				if event.works.any?
+					event.works.first.name
+				else
+					event.artists.first.name + more_event_titles(event)
+				end
 	end
 
 		

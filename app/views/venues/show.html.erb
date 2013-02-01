@@ -7,15 +7,7 @@
 	<%= link_to @venue.url, "http://#{@venue.url}" %>
 	<br><br><br>
 <div class="hidden-phone">
-	<div class="span3">
-		Wer
-	</div>
-	<div class="span7">
-		Was
-	</div>
-	<div class="span2">
-		Beginn
-	</div>
+	<%= render :partial => 'events/label_bar'%>
 </div>
 </div>
 	<table class="table table-striped">

@@ -28,7 +28,14 @@ class Event < ActiveRecord::Base
   end
 
   def to_param
-    "#{id}-#{artists.first.name.downcase.gsub(/[^a-zA-Z0-9]+/, '-').gsub(/-{2,}/, '-').gsub(/^-|-$/, '')}-#{venue.name.downcase.gsub(/[^a-zA-Z0-9]+/, '-').gsub(/-{2,}/, '-').gsub(/^-|-$/, '')}"
+      
+        if works.any?
+          this_title = works.first.name
+        else
+          this_title = artists.first.name
+        end
+
+    "#{id}-#{this_title.downcase.gsub(/[^a-zA-Z0-9]+/, '-').gsub(/-{2,}/, '-').gsub(/^-|-$/, '')}-#{venue.name.downcase.gsub(/[^a-zA-Z0-9]+/, '-').gsub(/-{2,}/, '-').gsub(/^-|-$/, '')}"
   end
 
 

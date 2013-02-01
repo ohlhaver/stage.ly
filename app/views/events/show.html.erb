@@ -1,5 +1,5 @@
-<% provide :title, @event.artists.first.name + more_event_titles(@event) + " @ " + @event.venue.name %>
-<% provide :page_title, @event.artists.first.name + more_event_titles(@event) + " @ " + @event.venue.name %>
+<% provide :title, event_title(@event) + " @ " + @event.venue.name %>
+<% provide :page_title, event_title(@event) + " @ " + @event.venue.name %>
 <% provide :keywords, @event.artists.first.name + more_event_titles(@event) + ", " + @event.venue.name %>
 
 <div class = "span8">
@@ -8,14 +8,52 @@
 
 			<br>
 
+			<div class ="event_details_item">
+				<div class="hidden-phone"><div class ="span1"><i class="icon-user"></i> </div></div>
+				<div class ="span11">
+					
+					<%= render @event.artists %>
+
+				</div>
+			</div>
+			<div class="hidden-phone"><br><br></div>
+
+			<% if @event.works.any? %>
+				<div class ="event_details_item">
+					<div class="hidden-phone"><div class ="span1"><i class="icon-book"></i> </div></div>
+					<div class ="span11">
+					
+						<%= render :partial => 'works/full_work', :collection => @event.works %>
+					</div>
+				</div>
+				<div class="hidden-phone"><br><br></div>
+			<% end %> 
 
 
+			<div class ="event_details_item">
+				<div class="hidden-phone"><div class ="span1"><i class="icon-tags"></i> </div></div>
+				<div class ="span11">		
+					<% if work_categories(@event) && work_categories(@event).uniq.first %>
+					<% if work_categories(@event).uniq.first.id == params[:id].to_i && params[:controller] == "categories" %><%= work_categories(@event).uniq.first.name %>
+					<% else %><%=link_to work_categories(@event).uniq.first.name, work_categories(@event).uniq.first %><% end %><%= render work_categories(@event).uniq.drop(1)%> 
+				<% else %>
+					<% if @event.categories.uniq.first %>
+							<% if @event.categories.uniq.first.id == params[:id].to_i && params[:controller] == "categories" %><%= @event.categories.uniq.first.name %>
+							<% else %>
+								<%=link_to @event.categories.uniq.first.name, @event.categories.uniq.first %><% end %><%= render @event.categories.uniq.drop(1)%> 
+					<% end %>
+				<% end %>
+				<%= link_to @event.type.singular, @event.type  %>
+
+				</div>
+			</div>
+			<div class="hidden-phone"><br><br></div>
 
 			
 			<div class ="event_details_item">
 				<div class="hidden-phone"><div class ="span1"><i class="icon-calendar"></i> </div></div>
 				<div class ="span11">
-				<%= @event.time.strftime("%a, %b %d, %H:%M Uhr") %><%= " (" + @event.type.singular + ")" if @event.type %>
+				<%= @event.time.strftime("%a, %b %d, %H:%M Uhr") %>
 				</div>
 			</div>
 			<br>
@@ -41,28 +79,24 @@
 						<%= "Preis: " + @event.price %>
 					</div>
 				</div>
-				<br>
+				<div class="hidden-phone"><br><br></div><br>
 			<%end%>
-			<div class ="event_details_item">
-				<div class="hidden-phone"><div class ="span1"><i class="icon-user"></i> </div></div>
-				<div class ="span11">
-					Künstler:<br>
-					<%= render @event.artists %>
 
-				</div>
-			</div>
-			<div class="hidden-phone"><br><br></div><br>
-
-			<% if @event.works.any? %>
-				<div class ="event_details_item">
-					<div class="hidden-phone"><div class ="span1"><i class="icon-book"></i> </div></div>
+			<%if @event.url != "" %>		
+				<div class ="event_details_item">	
+					<div class="hidden-phone"><div class ="span1"><i class="icon-zoom-in"></i> </div></div>
 					<div class ="span11">
-					Werke:<br>
-						<%= render :partial => 'works/full_work', :collection => @event.works %>
+						<%= link_to truncate(@event.url, :length => 20, :omission =>"...", :separator => ' '), "http://#{@event.url}" %>
 					</div>
 				</div>
 				<div class="hidden-phone"><br><br></div><br>
-			<% end %> 
+			<%end%>
+
+
+
+
+
+			
 		<li></li>
 
 
@@ -82,7 +116,7 @@
 
 				<table class="table table-striped">
 				  <tbody>
-					<%= render :partial => 'very_short_event', :collection => @same_artists_events %>
+					<%= render :partial => 'short_event', :collection => @same_artists_events %>
 				</tbody>
 				</table>
 		</div>
