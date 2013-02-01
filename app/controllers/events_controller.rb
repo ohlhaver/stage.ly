@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+	
+
 	def index
 		if params[:q]
 				@events = Event.search params[:q], :match_mode => :any, :order => :time,
@@ -28,15 +30,19 @@ class EventsController < ApplicationController
 		end
 		@same_artists_events = @same_artists_events.uniq.sort_by(&:time).first(10)
 
-		@event_categories = @event.categories.uniq
+
+		@event_categories = (@event.categories + event_work_categories(@event)).uniq
 
 		@same_categories_events = []
-			@event.categories.each do |category|
+			@event_categories.each do |category|
 				@same_categories_events += (category_events(category) - Array.wrap(@event))
 			end
 		@same_categories_events = @same_categories_events.uniq.sort_by(&:time).first(10)
 
 	end
+
+
+
 
 end
 

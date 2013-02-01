@@ -32,9 +32,9 @@
 			<div class ="event_details_item">
 				<div class="hidden-phone"><div class ="span1"><i class="icon-tags"></i> </div></div>
 				<div class ="span11">		
-					<% if work_categories(@event) && work_categories(@event).uniq.first %>
-					<% if work_categories(@event).uniq.first.id == params[:id].to_i && params[:controller] == "categories" %><%= work_categories(@event).uniq.first.name %>
-					<% else %><%=link_to work_categories(@event).uniq.first.name, work_categories(@event).uniq.first %><% end %><%= render work_categories(@event).uniq.drop(1)%> 
+					<% if event_work_categories(@event) && event_work_categories(@event).uniq.first %>
+					<% if event_work_categories(@event).uniq.first.id == params[:id].to_i && params[:controller] == "categories" %><%= event_work_categories(@event).uniq.first.name %>
+					<% else %><%=link_to event_work_categories(@event).uniq.first.name, event_work_categories(@event).uniq.first %><% end %><%= render event_work_categories(@event).uniq.drop(1)%> 
 				<% else %>
 					<% if @event.categories.uniq.first %>
 							<% if @event.categories.uniq.first.id == params[:id].to_i && params[:controller] == "categories" %><%= @event.categories.uniq.first.name %>
