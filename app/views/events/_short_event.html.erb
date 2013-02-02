@@ -5,13 +5,17 @@
 
 	<div class="span8">
 		<% if short_event.works.any? %>
-			<%= render :partial => 'works/full_work', :collection => short_event.works %>
+			<%= render short_event.works %>
 		<%else%>
 			<%= render short_event.artists %>
 		<%end%>
 	</div>
 
-	<div class="span4">
+	<div class="span2">
+			<%= link_to short_event.type.singular, short_event.type %>
+	</div>
+
+	<div class="span2">
 		<%= short_event.time.strftime("%H:%M Uhr, %b %d") %>
 	</div>
 

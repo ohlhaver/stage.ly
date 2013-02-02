@@ -4,7 +4,7 @@
 
 	<div class="span8">
 		<% if very_short_event.works.any? %>
-			<%= render :partial => 'works/full_work', :collection => very_short_event.works %>
+			<%= render very_short_event.works %>
 		<%else%>
 			<%= render very_short_event.artists %>
 		<%end%>
