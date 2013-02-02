@@ -6,7 +6,7 @@ class TypesController < ApplicationController
 			@type_categories=[]
 
 			@events.each do |event|
-				@type_categories += event.categories
+				@type_categories += event.categories + event_work_categories(event)
 			end
 
 			@type_categories = @type_categories.uniq.sort_by(&:name)
