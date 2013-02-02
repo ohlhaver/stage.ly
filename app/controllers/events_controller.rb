@@ -31,7 +31,7 @@ class EventsController < ApplicationController
 		@same_artists_events = @same_artists_events.uniq.sort_by(&:time).first(10)
 
 
-		@event_categories = (@event.categories + event_work_categories(@event)).uniq
+		@event_categories = event_categories(@event).uniq
 
 		@same_categories_events = []
 			@event_categories.each do |category|

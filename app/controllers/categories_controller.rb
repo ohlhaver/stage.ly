@@ -8,11 +8,11 @@ class CategoriesController < ApplicationController
 				@events = category_events(@category).uniq.sort_by(&:time)
 			end
 			
-
+			@type_events = @type.events.uniq.sort_by(&:time)
 			@type_categories=[]
 
-			@events.each do |event|
-				@type_categories += event.categories + event_work_categories(event)
+			@type_events.each do |event|
+				@type_categories += event_categories(event)
 			end
 
 			@type_categories = @type_categories.uniq.sort_by(&:name)

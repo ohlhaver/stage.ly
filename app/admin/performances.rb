@@ -1,5 +1,5 @@
 ActiveAdmin.register Performance do
-
+  menu false
   index do
   	column :id, :sortable => 'id'
 	column "Title", :sortable => 'title' do |performance|

@@ -1,5 +1,9 @@
 ActiveAdmin.register Artist do
 
+    action_item do
+      link_to "New event", :controller =>"events", :action => "new"
+    end
+    
 	index do
 	  	column :id, :sortable => 'id'
 		column "Name", :sortable => 'name' do |artist|

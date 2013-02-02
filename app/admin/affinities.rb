@@ -1,5 +1,5 @@
 ActiveAdmin.register Affinity do
-
+  menu false
   index do
   	column :id
 	column "Title", :sortable => 'title' do |affinity|

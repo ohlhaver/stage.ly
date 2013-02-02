@@ -3,6 +3,9 @@ ActiveAdmin.register Event do
 #	controller do
 #		belongs_to :artist, :polymorphic => true, :optional => true
 #	end
+    action_item do
+      link_to "New event", :controller =>"events", :action => "new"
+    end
 
   index do
   	column :id, :sortable => 'id'
@@ -60,11 +63,18 @@ ActiveAdmin.register Event do
     form do |f|
 	    f.inputs "Event" do
 	      f.input :type
+	      f.input :worktitle
+	      f.input :artisttitle
 	      f.input :venue
 	      f.input :time
 	      f.input :price
 	      f.input :url
 	    end
+
+	    f.inputs "Categories" do 
+	      f.input :categories
+	    end
+
 	    f.inputs "Artists" do 
 	      f.input :artists
 	    end

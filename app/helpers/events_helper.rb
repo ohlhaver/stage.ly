@@ -19,8 +19,10 @@ module EventsHelper
 	def event_title(event)
 				if event.works.any?
 					event.works.first.name
-				else
+				elsif event.artists.any?
 					event.artists.first.name + more_event_titles(event)
+				else
+					event.type.singular
 				end
 	end
 

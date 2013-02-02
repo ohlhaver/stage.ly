@@ -1,5 +1,9 @@
 ActiveAdmin.register_page "Dashboard" do
 
+    action_item do
+      link_to "New event", :controller =>"events", :action => "new"
+    end
+
   menu :priority => 1, :label => proc{ I18n.t("active_admin.dashboard") }
 
   content :title => proc{ I18n.t("active_admin.dashboard") } do

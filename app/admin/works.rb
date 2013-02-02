@@ -1,5 +1,9 @@
 ActiveAdmin.register Work do
 
+	    action_item do
+      link_to "New event", :controller =>"events", :action => "new"
+    end
+
 	form do |f|
 	    f.inputs "Work" do
 	      f.input :name
