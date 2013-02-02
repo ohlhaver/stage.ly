@@ -7,8 +7,12 @@
 				<% if event.works.any? %>	
 					<div class="span6">
 							
-							<div class ="event_details_item"%>	
-								<%= render event.works %>
+							<div class ="event_details_item"%>
+								<% if event.type == 1 %>
+									<%= render :partial => 'works/full_work', :collection => event.works %>
+								<% else %>
+									<%= render event.works %>
+								<% end %>
 							</div>						
 					</div>
 				<% end %> 
@@ -34,7 +38,7 @@
 
 <% unless params[:controller] == "categories" or params[:controller] == "events" or params[:controller] == "works"%>
 		<div class="span2">
-
+			<% unless event.type.gid == 2 %>
 				<% if event_work_categories(event) && event_work_categories(event).uniq.first %>
 					<% if event_work_categories(event).uniq.first.id == params[:id].to_i && params[:controller] == "categories" %><%= event_work_categories(event).uniq.first.name %>
 					<% else %><%=link_to event_work_categories(event).uniq.first.name, event_work_categories(event).uniq.first %><% end %><%= render event_work_categories(event).uniq.drop(1)%> 
@@ -45,6 +49,7 @@
 								<%=link_to event.categories.uniq.first.name, event.categories.uniq.first %><% end %><%= render event.categories.uniq.drop(1)%> 
 					<% end %>
 				<% end %>
+			<%end%>
 		</div>
 	<%end%>
 	
