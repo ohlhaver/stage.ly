@@ -8,7 +8,7 @@
 					<div class="span6">
 							
 							<div class ="event_details_item"%>
-								<% if event.type.gid == 1 %>
+								<% if event.type.gid == 1 && event.composers.any?%>
 									<%= render event.composers %>
 								<% else %>
 									<%= render event.works %>
