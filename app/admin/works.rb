@@ -16,6 +16,10 @@ ActiveAdmin.register Work do
 	      f.input :categories
 	    end
 
+	    f.inputs "Subcategories" do 
+	      f.input :subcategory
+	    end
+
 
 	    f.buttons
   	end

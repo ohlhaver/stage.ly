@@ -14,6 +14,14 @@
 			
 		</div>
 	<%end%>
+
+	<% if params[:controller] == "categories" && @category.subcategories.any? %>
+
+		<div class="span2">
+			
+		</div>
+
+	<%end%>
 	
 		<div class="span2">
 			<% unless params[:controller] == "venues"%>Ort<%end%>

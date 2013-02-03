@@ -1,5 +1,5 @@
 class Work < ActiveRecord::Base
-  attr_accessible :name, :category_id, :composer_ids, :category_ids
+  attr_accessible :name, :category_id, :composer_ids, :category_ids, :subcategory_id
   has_many :compositions
   has_many :composers, :through => :compositions, :source => :artist
 
@@ -8,6 +8,7 @@ class Work < ActiveRecord::Base
   belongs_to :category
   has_many :work_categories
   has_many :categories, :through => :work_categories
+  belongs_to :subcategory
 
   validates_uniqueness_of :name, :case_sensitive => false
 

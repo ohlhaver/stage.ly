@@ -8,7 +8,8 @@ class Category < ActiveRecord::Base
   has_many :events_from_works, through: :works, :source => :events
   has_many :event_categories
   has_many :events, through: :event_categories
-  
+  has_many :subcategories
+
   validates_uniqueness_of :name, :case_sensitive => false
 
 
