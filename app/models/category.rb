@@ -9,6 +9,7 @@ class Category < ActiveRecord::Base
   has_many :event_categories
   has_many :events, through: :event_categories
   has_many :subcategories
+  belongs_to :type
 
   validates_uniqueness_of :name, :case_sensitive => false
 
