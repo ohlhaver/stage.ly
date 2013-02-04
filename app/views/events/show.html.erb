@@ -71,7 +71,7 @@
 			<div class ="event_details_item">
 				<div class="hidden-phone"><div class ="span1"><i class="icon-calendar"></i> </div></div>
 				<div class ="span11">
-				<%= I18n.localize(@event.time) %>
+				<%= @event.time.strftime("%a, %e. %b, %-H:%M Uhr") %>
 				</div>
 			</div>
 			<br>

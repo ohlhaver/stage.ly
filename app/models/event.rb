@@ -29,8 +29,11 @@ class Event < ActiveRecord::Base
     indexes artists.name, :as => :artists
     indexes venue.name, :as => :venue
     indexes categories.name, :as => :categories
+    indexes type.name, :as => :type
     indexes works.name, :as => :works
     indexes composers.name, :as => :composers
+    indexes direct_composers.name, :as => :composers
+    indexes subcategories.name, :as => :subcategories
 
     has time
     
