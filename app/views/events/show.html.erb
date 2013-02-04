@@ -7,12 +7,16 @@
 		
 
 			<br>
-			<% if @event.works.any? %>
+			<% if @event.works.any? or event_composers(@event).any? %>
 				<div class ="event_details_item">
 					<div class="hidden-phone"><div class ="span1"><i class="icon-book"></i> </div></div>
 					<div class ="span11">
-					
-						<%= render :partial => 'works/full_work', :collection => @event.works %>
+					<% if @event.works.any? %>
+						<%= render :partial => 'works/full_work', :collection => @event.works %><br>
+					<% end %>
+					<% if @event.direct_composers.any? %>Werke von 
+						<%= render @event.direct_composers if @event.direct_composers.any? %><br>
+					<% end %>
 					</div>
 				</div>
 				<div class="hidden-phone"><br><br></div>

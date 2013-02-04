@@ -66,13 +66,21 @@ ActiveAdmin.register Event do
 	      f.input :worktitle
 	      f.input :artisttitle
 	      f.input :venue
-	      f.input :time
+	      f.input :time, :minute_step => 15
 	      f.input :price
 	      f.input :url
 	    end
 
-	    f.inputs "Categories" do 
+	    f.inputs "direct Composers" do 
+	      f.input :direct_composers
+	    end
+
+	    f.inputs "direct Categories" do 
 	      f.input :categories
+	    end
+
+	    f.inputs "direct Subcategories" do 
+	      f.input :subcategories
 	    end
 
 	    f.inputs "Artists" do 

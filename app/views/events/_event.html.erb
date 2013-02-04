@@ -4,12 +4,12 @@
 	<div class ="span6">
 		<div class="row-fluid">
 			<% unless params[:controller] == "works" %>
-				<% if event.works.any? %>	
+				<% if event.works.any? or event_composers(event).any?%>	
 					<div class="span6">
 							
 							<div class ="event_details_item"%>
-								<% if event.type.gid == 1 && event.composers.any?%>
-									<%= render event.composers %>
+								<% if event.type.gid == 1 && event_composers(event).any?%>
+									<%= render event_composers(event).uniq %>
 								<% else %>
 									<%= render event.works %>
 								<% end %>

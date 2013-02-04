@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :price, :time, :url, :venue_id, :title, :artist_ids, :type_id, :work_ids, :worktitle, :artisttitle, :category_ids
+  attr_accessible :price, :time, :url, :venue_id, :title, :artist_ids, :type_id, :work_ids, :worktitle, :artisttitle, :category_ids, :direct_composer_ids, :subcategory_ids
   has_many :performances
   has_many :artists, through: :performances
   has_many :categories_from_artists, through: :artists, :source => :categories
@@ -9,7 +9,10 @@ class Event < ActiveRecord::Base
   has_many :composers, through: :works
   has_many :event_categories
   has_many :categories, through: :event_categories
-  has_many :subcategories, through: :works
+  has_many :event_subcategories
+  has_many :subcategories, through: :event_subcategories
+  has_many :event_composers
+  has_many :direct_composers, through: :event_composers, :source => :artist
   
   validates_presence_of :venue_id, :time, :type_id
 
