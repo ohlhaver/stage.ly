@@ -39,14 +39,14 @@
 			<div class ="event_details_item">
 				<div class="hidden-phone"><div class ="span1"><i class="icon-tags"></i> </div></div>
 				<div class ="span11">	
-					
+					<%= link_to @event.type.singular, @event.type  %>
 					<% if event_categories(@event) && event_categories(@event).uniq.first %>
-						<%=link_to event_categories(@event).uniq.first.name, event_categories(@event).uniq.first %><%= render event_categories(@event).uniq.drop(1)%>, 
+						| <%=link_to event_categories(@event).uniq.first.name, event_categories(@event).uniq.first %><%= render event_categories(@event).uniq.drop(1)%> 
 				<% end %>
 								<% if @event.subcategories.any? %>
-					<%= @event.subcategories.uniq.first.name %><%= render @event.subcategories.uniq.drop(1) %>
+					| <%= @event.subcategories.uniq.first.name %><%= render @event.subcategories.uniq.drop(1) %>
 				<% end %>
-				<%= link_to @event.type.singular, @event.type  %><br>
+				<br>
 					
 				
 				
