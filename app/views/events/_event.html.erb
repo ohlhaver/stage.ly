@@ -20,7 +20,7 @@
 
 
 			<div class="span6">
-				<% unless event.type.gid == 2 %>
+				<% unless event.type.gid == 2 && event.works.any? %>
 					<%= render event.artists %>
 				<% end %>
 			</div>
