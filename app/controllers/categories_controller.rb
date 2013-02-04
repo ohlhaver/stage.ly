@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
 				@type = Type.find(params[:type])
 			#	@type_events = @type.events.uniq.sort_by(&:time)
 				@events = category_events(@category).select { |event| event.type_id == @type.id}.uniq.sort_by(&:time)
-						@type_categories = @type.categories#@type_categories.uniq.sort_by(&:name)
+				@type_categories = @type.categories.sort_by(&:name)
 			else
 			
 				@events = category_events(@category).uniq.sort_by(&:time)
