@@ -53,3 +53,5 @@ gem 'jquery-rails'
 
 gem 'thinking-sphinx', '2.0.11'
 gem 'flying-sphinx',   '0.8.4'
+
+gem "lol_dba"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130204112427) do
+ActiveRecord::Schema.define(:version => 20130204225231) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -54,6 +54,9 @@ ActiveRecord::Schema.define(:version => 20130204112427) do
     t.string   "title"
   end
 
+  add_index "affinities", ["artist_id"], :name => "index_affinities_on_artist_id"
+  add_index "affinities", ["category_id"], :name => "index_affinities_on_category_id"
+
   create_table "artists", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -67,12 +70,18 @@ ActiveRecord::Schema.define(:version => 20130204112427) do
     t.integer  "type_id"
   end
 
+  add_index "categories", ["type_id"], :name => "index_categories_on_type_id"
+
   create_table "compositions", :force => true do |t|
     t.integer  "work_id"
     t.integer  "artist_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "compositions", ["artist_id", "work_id"], :name => "index_compositions_on_artist_id_and_work_id"
+  add_index "compositions", ["artist_id"], :name => "index_compositions_on_artist_id"
+  add_index "compositions", ["work_id"], :name => "index_compositions_on_work_id"
 
   create_table "event_categories", :force => true do |t|
     t.integer  "event_id"
@@ -81,6 +90,10 @@ ActiveRecord::Schema.define(:version => 20130204112427) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "event_categories", ["category_id", "event_id"], :name => "index_event_categories_on_category_id_and_event_id"
+  add_index "event_categories", ["category_id"], :name => "index_event_categories_on_category_id"
+  add_index "event_categories", ["event_id"], :name => "index_event_categories_on_event_id"
+
   create_table "event_composers", :force => true do |t|
     t.integer  "artist_id"
     t.integer  "event_id"
@@ -88,12 +101,19 @@ ActiveRecord::Schema.define(:version => 20130204112427) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "event_composers", ["artist_id", "event_id"], :name => "index_event_composers_on_artist_id_and_event_id"
+  add_index "event_composers", ["artist_id"], :name => "index_event_composers_on_artist_id"
+  add_index "event_composers", ["event_id"], :name => "index_event_composers_on_event_id"
+
   create_table "event_subcategories", :force => true do |t|
     t.integer  "event_id"
     t.integer  "subcategory_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
+
+  add_index "event_subcategories", ["event_id"], :name => "index_event_subcategories_on_event_id"
+  add_index "event_subcategories", ["subcategory_id"], :name => "index_event_subcategories_on_subcategory_id"
 
   create_table "events", :force => true do |t|
     t.integer  "venue_id"
@@ -109,12 +129,18 @@ ActiveRecord::Schema.define(:version => 20130204112427) do
     t.string   "composertitle"
   end
 
+  add_index "events", ["type_id"], :name => "index_events_on_type_id"
+  add_index "events", ["venue_id"], :name => "index_events_on_venue_id"
+
   create_table "occasions", :force => true do |t|
     t.integer  "work_id"
     t.integer  "event_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "occasions", ["event_id"], :name => "index_occasions_on_event_id"
+  add_index "occasions", ["work_id"], :name => "index_occasions_on_work_id"
 
   create_table "performances", :force => true do |t|
     t.integer  "artist_id"
@@ -124,12 +150,17 @@ ActiveRecord::Schema.define(:version => 20130204112427) do
     t.string   "title"
   end
 
+  add_index "performances", ["artist_id"], :name => "index_performances_on_artist_id"
+  add_index "performances", ["event_id"], :name => "index_performances_on_event_id"
+
   create_table "subcategories", :force => true do |t|
     t.string   "name"
     t.integer  "category_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "subcategories", ["category_id"], :name => "index_subcategories_on_category_id"
 
   create_table "types", :force => true do |t|
     t.string   "name"
@@ -153,6 +184,10 @@ ActiveRecord::Schema.define(:version => 20130204112427) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "work_categories", ["category_id", "work_id"], :name => "index_work_categories_on_category_id_and_work_id"
+  add_index "work_categories", ["category_id"], :name => "index_work_categories_on_category_id"
+  add_index "work_categories", ["work_id"], :name => "index_work_categories_on_work_id"
 
   create_table "works", :force => true do |t|
     t.string   "name"
