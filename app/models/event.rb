@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :price, :time, :url, :venue_id, :title, :artist_ids, :type_id, :work_ids, :worktitle, :artisttitle, :category_ids, :direct_composer_ids, :subcategory_ids
+  attr_accessible :price, :time, :url, :venue_id, :title, :artist_ids, :type_id, :work_ids, :worktitle, :artisttitle, :category_ids, :direct_composer_ids, :subcategory_ids, :composertitle
   has_many :performances
   has_many :artists, through: :performances
   has_many :categories_from_artists, through: :artists, :source => :categories
@@ -21,6 +21,7 @@ class Event < ActiveRecord::Base
   before_save :generate_title
   after_save :generate_work
   after_save :generate_artists
+  after_save :generate_composers
 
   define_index do
     indexes artists.name, :as => :artists
@@ -67,6 +68,20 @@ class Event < ActiveRecord::Base
         artist.category_ids = self.category_ids if self.category_ids && artist.category_ids.empty?
         artist.save!
         Performance.find_or_create_by_event_id_and_artist_id(self.id, artist.id)
+
+      end
+    end
+  end
+
+  def generate_composers
+    if self.composertitle != ""
+      composers = self.composertitle.split(",")
+      composers.each do |name|
+        artist = Artist.find_or_create_by_name(name)
+        artist.name = name
+        artist.category_ids = self.category_ids if self.category_ids && artist.category_ids.empty?
+        artist.save!
+        EventComposer.find_or_create_by_event_id_and_artist_id(self.id, artist.id)
 
       end
     end
