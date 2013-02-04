@@ -71,7 +71,8 @@
 	<%end%>
 
 	<div class="span2">
-		<%= event.time.strftime("%a %H:%M Uhr, %b %d") %>
+		<%= I18n.localize(event.time, :format => :up) %> <br>
+		<%= I18n.localize(event.time, :format => :down) %>
 	</div>
 	
 </div>

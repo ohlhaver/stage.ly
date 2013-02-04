@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= full_slogan(yield(:page_title)) %> - stage.ly</title>
-   <meta name="description" content="<%= full_slogan(yield(:page_title)) %>"/>     
-    <meta name="keywords" content="<%= yield(:keywords) + ", " + "Lübeck, Konzerte, Concerts"%>"/>
+  <title><%= full_slogan(yield(:page_title)).html_safe %> - stage.ly</title>
+   <meta name="description" content="<%= full_slogan(yield(:page_title)).html_safe %>"/>     
+    <meta name="keywords" content="<%= yield(:keywords).html_safe + ", " + "Lübeck, Konzerte, Concerts"%>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
   <%= stylesheet_link_tag    "application", :media => "all" %>

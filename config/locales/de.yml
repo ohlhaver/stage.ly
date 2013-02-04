@@ -9,11 +9,11 @@ en:
       long: "%B %d, %Y"
 
     day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
-    abbr_day_names: [So, Mo, Di, Mi, Do, Fr, Sa]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
 
     # Don't forget the nil at the beginning; there's no such thing as a 0th month
     month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
-    abbr_month_names: [~, Jan, Feb, Mär, Apr, Mai, Jun, Jul, Aug, Sep, Okt, Nov, Dez]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
     # Used in date_select and datetime_select.
     order:
       - year
@@ -22,9 +22,7 @@ en:
 
   time:
     formats:
-      default: "%a, %e. %b, %-H:%M Uhr"
-      up: "%a, %e. %b"
-      down:   "%-H:%M Uhr"
+      default: "%a, %d %b %Y %H:%M:%S %z"
       short: "%d %b %H:%M"
       long: "%B %d, %Y %H:%M"
     am: "am"
@@ -133,5 +131,4 @@ en:
           billion: Billion
           trillion: Trillion
           quadrillion: Quadrillion
-
 
