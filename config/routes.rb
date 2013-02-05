@@ -9,6 +9,8 @@ StageLy::Application.routes.draw do
   resources :categories
   resources :types
   
+  get "static_pages/imprint"
+  get 'imprint', to: 'static_pages#imprint', as: 'imprint'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
