@@ -97,6 +97,10 @@
 				<div class="hidden-phone"><br><br></div><br>
 			<%end%>
 
+			<div class = "error_message">
+				<%= mail_to "stage.ly@gmail.com", "Daten korrekt?", :subject => 'Fehler bei Veranstaltung Id:' + @event.id.to_s , :class=> 'sea_green' %>
+			</div>
+
 
 
 
