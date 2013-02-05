@@ -2,6 +2,18 @@
 <% provide :page_title, @type.name + " in Lübeck" %>
 <% provide :keywords, @type.name %>
 
+<div class="visible-phone">
+	<div class="mobile_category_menu">
+		
+		
+					<%# if params[:action] == "index" or params[:controller] == "categories" %>
+							<%= link_to "Alle", root_path %>
+						<%= render :partial => 'categories/button_category', :collection => @type_categories %>
+					<%#end%>
+		
+	</div>
+</div>
+
 <div class="hidden-phone">
 	<%= render :partial => 'events/label_bar'%>
 </div>

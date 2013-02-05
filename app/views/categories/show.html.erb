@@ -6,13 +6,9 @@
 		
 		
 					<%# if params[:action] == "index" or params[:controller] == "categories" %>
-						<% unless params[:controller] == "events" && params[:action] == "index" %>
-							<%= link_to "Alle", root_path %>
-							<%else%>
-							<%= "Alle" %>
-							<%end%>
-							
-						<%= render :partial => 'categories/button_category', :collection => categories %>
+						
+							<%= link_to "Alle", root_path %> | 	<%= link_to @category.type.name, @category.type %>
+
 					<%#end%>
 		
 	</div>
