@@ -4,11 +4,21 @@
 <div class = "short_event_listing">
 
 	<div class="span8">
-		<% if short_event.works.any? %>
-			<%= render short_event.works %>
-		<%else%>
-			<%= render short_event.artists %>
-		<%end%>
+			<div class ="event_details_item"%>
+
+				<% if short_event.type.gid == 1 && event_composers(short_event).any?%>
+					
+					<%= render event_composers(short_event).uniq.first(3) %>
+					<%= "... " if event_composers(short_event).uniq.count > 3 %> <br>
+							
+				<% elsif short_event.works.any?%>	
+					<%= render short_event.works %>
+				<% else %>
+					<%= render short_event.artists %>
+				
+				<% end %> 
+			</div>
+							
 	</div>
 
 	<div class="span2">
@@ -20,7 +30,7 @@
 		<%= short_event.time.strftime("%-H:%M Uhr") %>
 	</div>
 
-	
+	</div>
 </div>
 </td>
 </tr>

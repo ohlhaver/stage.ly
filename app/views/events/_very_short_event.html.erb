@@ -3,12 +3,23 @@
 <div class = "very_short_event_listing" >
 
 	<div class="span8">
-		<% if very_short_event.works.any? %>
-			<%= render very_short_event.works %>
-		<%else%>
-			<%= render very_short_event.artists %>
-		<%end%>
+			<div class ="event_details_item"%>
+
+				<% if very_short_event.type.gid == 1 && event_composers(very_short_event).any?%>
+					
+					<%= render event_composers(very_short_event).uniq.first(3) %>
+					<%= "... " if event_composers(very_short_event).uniq.count > 3 %> <br>
+							
+				<% elsif very_short_event.works.any?%>	
+					<%= render very_short_event.works %>
+				<% else %>
+					<%= render very_short_event.artists %>
+				
+				<% end %> 
+			</div>
+							
 	</div>
+			
 
 	<div class="span4">
 		<%= very_short_event.time.strftime("%a, %e. %b") %><br>
