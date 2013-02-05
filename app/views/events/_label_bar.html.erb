@@ -1,31 +1,37 @@
-	<div class="span4">
-		Was
+<div class ="span5">
+	<div class="row-fluid">
 
+		<div class="span7">
+			Was
+
+		</div>
+		
+		
+			<div class="span5">
+				
+			</div>
 	</div>
-	
-	
-		<div class="span2">
-			
-		</div>
-	
+</div>
 
-	<% unless params[:controller] == "categories" %>
-		<div class="span2">
-			
+		<% unless params[:controller] == "categories" %>
+			<div class="span2">
+				Genre
+			</div>
+		<%end%>
+
+		<% if params[:controller] == "categories" && @category.subcategories.any? %>
+
+			<div class="span2">
+				Genre
+			</div>
+
+		<%end%>
+
+	<% unless params[:controller] == "venues"%>
+		<div class="span3">
+			Ort
 		</div>
 	<%end%>
-
-	<% if params[:controller] == "categories" && @category.subcategories.any? %>
-
-		<div class="span2">
-			
-		</div>
-
-	<%end%>
-	
-		<div class="span2">
-			<% unless params[:controller] == "venues"%>Ort<%end%>
-		</div>
 	
 	<div class="span2">
 		Beginn

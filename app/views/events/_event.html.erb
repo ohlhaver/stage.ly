@@ -1,11 +1,11 @@
 <tr onclick="location.href='<%=event_path(event)%>';" style="cursor:pointer">
         <td>
 <div id = "event_listing" >
-	<div class ="span6">
+	<div class ="span5">
 		<div class="row-fluid">
-			<% unless params[:controller] == "works" %>
+			
 				<% if event.works.any? or event_composers(event).any?%>	
-					<div class="span6">
+					<div class="span7">
 							
 							<div class ="event_details_item"%>
 								<% if event.type.gid == 1 && event_composers(event).any?%>
@@ -17,10 +17,10 @@
 							</div>						
 					</div>
 				<% end %> 
-			<% end %>
+			
 
 
-			<div class="span6">
+			<div class="span5">
 				<% unless event.type.gid == 2 && event.works.any? %>
 					<%= render event.artists %>
 				<% end %>
@@ -39,14 +39,11 @@
 
 
 
-	<% unless params[:controller] == "categories" or params[:controller] == "events" or params[:controller] == "works"%>
+	<% if params[:controller] == "types"%>
 		<div class="span2">
 				<% if event_categories(event) && event_categories(event).uniq.first %>
 					<% if event_categories(event).uniq.first.id == params[:id].to_i && params[:controller] == "categories" %><%= event_categories(event).uniq.first.name %>
 					<% else %><%=link_to event_categories(event).uniq.first.name, event_categories(event).uniq.first %><% end %><%= render event_categories(event).uniq.drop(1)%> 
-				<% end %>
-				<% if event.subcategories.any? %>
-					<br><%= event.subcategories.uniq.first.name %><%= render event.subcategories.uniq.drop(1) %>
 				<% end %>
 
 		</div>
@@ -63,7 +60,7 @@
 	<%end%>
 	
 	<% unless params[:controller] == "venues"%>
-		<div class="span2">
+		<div class="span3">
 				<div class="hidden-phone">
 					<%= link_to event.venue.name, event.venue unless params[:controller] == "venues"%>
 				</div>
