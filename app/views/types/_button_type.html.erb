@@ -1,0 +1,2 @@
+
+<% if button_type.id == params[:id].to_i  && params[:controller] == "types" %> | <%= button_type.name%><% else %> | <%=link_to button_type.name, button_type %><% end %>
