@@ -71,6 +71,9 @@ li {
 
 .logo {
 
+	img {
+		max-width: 30px;
+	}
 
 @media (max-width: 480px) { 
 		font-size: 23px;
@@ -81,7 +84,7 @@ li {
 @media (min-width: 481px) { 
 		font-size: 23px;
 
-		margin-top: 8px;
+		margin-top: 15px;
 		margin-bottom: 60px;
 }
 
