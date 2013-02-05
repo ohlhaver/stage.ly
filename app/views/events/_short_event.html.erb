@@ -5,29 +5,16 @@
 
 	<div class="span8">
 			<div class ="event_details_item"%>
-
-				<% if short_event.type.gid == 1 && event_composers(short_event).any?%>
-					
-					<%= render event_composers(short_event).uniq.first(3) %>
-					<%= "... " if event_composers(short_event).uniq.count > 3 %> <br>
-							
-				<% elsif short_event.works.any?%>	
-					<%= render short_event.works %>
-				<% else %>
-					<%= render short_event.artists %>
-				
-				<% end %> 
+				<%= link_to short_event.venue.name, short_event.venue %>
 			</div>
 							
 	</div>
 
-	<div class="span2">
-			<%= link_to short_event.type.singular, short_event.type %>
-	</div>
 
-	<div class="span2">
-		<%= short_event.time.strftime("%a, %e. %b") %><br>
-		<%= short_event.time.strftime("%-H:%M Uhr") %>
+
+	<div class="span4">
+		<%= short_event.time.strftime("%a, %e. %b, %-H:%M Uhr") %><br>
+		
 	</div>
 
 	</div>

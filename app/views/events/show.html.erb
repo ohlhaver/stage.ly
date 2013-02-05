@@ -91,7 +91,7 @@
 				<div class ="event_details_item">	
 					<div class="hidden-phone"><div class ="span1"><i class="icon-zoom-in"></i> </div></div>
 					<div class ="span11">
-						<%= link_to truncate(@event.url, :length => 20, :omission =>"...", :separator => ' '), "http://#{@event.url}" %>
+						Mehr: <%= link_to truncate(@event.url, :length => 20, :omission =>"...", :separator => ' '), "http://#{@event.url}" %>
 					</div>
 				</div>
 				<div class="hidden-phone"><br><br></div><br>
@@ -108,11 +108,11 @@
 			
 			
 		
-		<% if @same_artists_events.any? %>
+		<% if event_works_events(@event) && event_works_events(@event).any? %>
 			<div class= "same_categories_events">
 					<div class = "event_bar">
 						<div class="span10">
-							Andere Veranstaltungen mit <%= (link_to @event.artists.first.name, @event.artists.first) + more_linked_event_titles(@event) %> in Lübeck:
+							Andere Termine für die gleiche Veranstaltung in Lübeck:
 							
 						</div>
 					</div>
@@ -121,7 +121,7 @@
 
 					<table class="table table-striped">
 					  <tbody>
-						<%= render :partial => 'very_short_event', :collection => @same_artists_events %>
+						<%= render :partial => 'short_event', :collection => event_works_events(@event) %>
 					</tbody>
 					</table>
 			</div>

@@ -13,6 +13,7 @@ class Event < ActiveRecord::Base
   has_many :subcategories, through: :event_subcategories
   has_many :event_composers
   has_many :direct_composers, through: :event_composers, :source => :artist
+  has_many :works_events, through: :works, :source => :events
   
   validates_presence_of :venue_id, :time, :type_id
 

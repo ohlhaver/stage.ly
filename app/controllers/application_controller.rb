@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-	helper_method :event_work_categories, :event_categories, :event_composers
+	helper_method :event_work_categories, :event_categories, :event_composers, :event_works_events
 
   	def category_events(category)
 		return category.events + category.events_from_artists + category.events_from_works
@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
 
 	def event_composers(event)
 		return event.composers + event.direct_composers
+	end
+
+	def event_works_events(event)
+		return event.works_events - Array.wrap(event)
 	end
 
 

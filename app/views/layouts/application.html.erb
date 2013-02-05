@@ -50,7 +50,11 @@ _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
 							<div class ="span8">
 								<div class="hidden-phone">
 								<div class='slogan'>
+									<% if @event && @event.url != "" %>
+									<%= link_to full_slogan(yield(:title)).html_safe, "http://#{@event.url}" %>
+									<% else %>
 									<%= full_slogan(yield(:title)).html_safe %>
+									<%end%>
 								</div>
 								</div>
 							</div>
@@ -64,7 +68,11 @@ _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
               				<br>
               												<div class="visible-phone">
 								<div class='slogan'>
+									<% if @event && @event.url != "" %>
+									<%= link_to full_slogan(yield(:title)).html_safe, "http://#{@event.url}" %>
+									<% else %>
 									<%= full_slogan(yield(:title)).html_safe %>
+									<%end%>
 								</div>
 								</div>
               				<div class="row-fluid">
