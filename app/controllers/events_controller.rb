@@ -9,7 +9,7 @@ class EventsController < ApplicationController
 			@events = Event.all.sort_by(&:time)
 		end
 
-		@events = Kaminari.paginate_array(@events).page(params[:page]).per(50)
+		@events = Kaminari.paginate_array(@events).page(params[:page]).per(25)
 
 
 		#if params[:category]

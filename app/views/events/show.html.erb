@@ -60,7 +60,7 @@
 				<div class ="span11">
 					<%= link_to @event.venue.name, @event.venue %>
 					<br>
-					<%= @event.venue.address %> <%= link_to "(Map)","http://maps.google.de/maps?q=#{@event.venue.address}+Lübeck" %>
+					<%= @event.venue.address %> <%= link_to "(Karte)","http://maps.google.de/maps?q=#{@event.venue.address}+Lübeck" %>
 					<br>
 					<%= link_to @event.venue.url, "http://#{@event.venue.url}" %>
 					
@@ -108,42 +108,49 @@
 			
 			
 		
-	<% if @same_artists_events.any? %>
-		<div class= "same_categories_events">
-				<div class = "event_bar">
-					<div class="span10">
-						Andere Veranstaltungen mit <%= (link_to @event.artists.first.name, @event.artists.first) + more_linked_event_titles(@event) %> in Lübeck:
-						
+		<% if @same_artists_events.any? %>
+			<div class= "same_categories_events">
+					<div class = "event_bar">
+						<div class="span10">
+							Andere Veranstaltungen mit <%= (link_to @event.artists.first.name, @event.artists.first) + more_linked_event_titles(@event) %> in Lübeck:
+							
+						</div>
 					</div>
-				</div>
-				<br><br><br>
+					<br><br><br>
 
 
-				<table class="table table-striped">
-				  <tbody>
-					<%= render :partial => 'very_short_event', :collection => @same_artists_events %>
-				</tbody>
-				</table>
-		</div>
-	<%end%>	
+					<table class="table table-striped">
+					  <tbody>
+						<%= render :partial => 'very_short_event', :collection => @same_artists_events %>
+					</tbody>
+					</table>
+			</div>
+		<%end%>	
 	</div>	
 </div>
-<div class="visible-phone"><li></li></div>
+
+		
 <% if @same_categories_events.any? %>
-		<div class= "same_categories_events">
-				<div class = "event_bar">
-<div class = "span4">
-		Andere <%= link_to @event_categories.first.name, @event_categories.first %><%= render @event_categories.drop(1) %> Veranstaltungen in Lübeck:
-		<br><br><br>
-	<table class="table table-striped">
-	  <tbody>
-		<%= render :partial => 'very_short_event', :collection => @same_categories_events %>
-	  </tbody>
-	</table>
-</div>
+	<div class = "span4">
+			<div class="visible-phone"><li></li></div>
+				<div class= "same_categories_events">
+					<div class = "event_bar">
+						
+								Andere <%= link_to @event_categories.first.name, @event_categories.first %><%= render @event_categories.drop(1) %> Veranstaltungen in Lübeck:
+								<br><br><br>
+							<table class="table table-striped">
+							  <tbody>
+								<%= render :partial => 'very_short_event', :collection => @same_categories_events %>
+							  </tbody>
+							</table>
+					</div>
+				</div>
+			</div>
+	</div>
 <%end%>
-</div>
-</div>
+
+		
+
 	
 
 

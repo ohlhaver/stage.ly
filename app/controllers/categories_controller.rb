@@ -13,6 +13,8 @@ class CategoriesController < ApplicationController
 				@events = category_events(@category).uniq.sort_by(&:time)
 			#	@type_events = @events
 			end
+
+			@events = Kaminari.paginate_array(@events).page(params[:page]).per(25)
 			
 			
 			#@type_categories=[]

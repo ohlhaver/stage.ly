@@ -2,6 +2,7 @@ class TypesController < ApplicationController
 		def show
 			@type = Type.find(params[:id])
 			@events = @type.events.sort_by(&:time)
+			@events = Kaminari.paginate_array(@events).page(params[:page]).per(25)
 
 			#@type_categories=[]
 
