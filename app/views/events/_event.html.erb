@@ -6,14 +6,13 @@
 			
 				<% if event.works.any? or event_composers(event).any?%>	
 					<div class="span7">
-							
 							<div class ="event_details_item"%>
 								<% if event.type.gid == 1 && event_composers(event).any?%>
-									<%= render event_composers(event).uniq.first(3) %>
-						<%= "... " if event_composers(event).uniq.count > 3 %> <br>
-								<% else %>
-									<%= render event.works %>
-								<% end %>
+								<%= render event_composers(event).uniq.first(3) %>
+								<%= "... " if event_composers(event).uniq.count > 3 %> <br>
+								<% elsif event.works.any?%>	
+								<%= render event.works %>
+								<% end %> 
 							</div>						
 					</div>
 				<% end %> 
