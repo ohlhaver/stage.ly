@@ -32,8 +32,10 @@
 					<div class="row-fluid">
 						
 							<div class ="span8">
+								<div class="hidden-phone">
 								<div class='slogan'>
 									<%= full_slogan(yield(:title)).html_safe %>
+								</div>
 								</div>
 							</div>
 							<div class ="span4">
@@ -44,8 +46,13 @@
 			                  	</div>
               				</div>
               				<br>
+              												<div class="visible-phone">
+								<div class='slogan'>
+									<%= full_slogan(yield(:title)).html_safe %>
+								</div>
+								</div>
               				<div class="row-fluid">
-							<div class="fb-like span8" data-send="false" data-width="240" data-show-faces="false"></div>	
+							<div class="hidden-phone"><div class="fb-like span8" data-send="false" data-width="240" data-show-faces="false"></div></div>
 							</div>	
 				
 					</div>

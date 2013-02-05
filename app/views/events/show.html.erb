@@ -121,15 +121,17 @@
 
 				<table class="table table-striped">
 				  <tbody>
-					<%= render :partial => 'short_event', :collection => @same_artists_events %>
+					<%= render :partial => 'very_short_event', :collection => @same_artists_events %>
 				</tbody>
 				</table>
 		</div>
 	<%end%>	
 	</div>	
 </div>
-
+<div class="visible-phone"><li></li></div>
 <% if @same_categories_events.any? %>
+		<div class= "same_categories_events">
+				<div class = "event_bar">
 <div class = "span4">
 		Andere <%= link_to @event_categories.first.name, @event_categories.first %><%= render @event_categories.drop(1) %> Veranstaltungen in Lübeck:
 		<br><br><br>
@@ -140,6 +142,8 @@
 	</table>
 </div>
 <%end%>
+</div>
+</div>
 	
 
 

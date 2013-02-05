@@ -10,7 +10,7 @@
 		
 					<%# if params[:action] == "index" or params[:controller] == "categories" %>
 
-							<%= "Alle" %>
+							
 							
 							
 						<%= render :partial => 'types/button_type', :collection => Type.all %>
@@ -22,13 +22,27 @@
 
 <div class="hidden-phone">
 	<%= render :partial => 'events/label_bar'%>
-</div>
+
 		<table class="table table-striped">
 	  <tbody>
 		<%= render @events %>
 	  </tbody>
 	</table>
+
+</div>
+
+<div class="visible-phone">
+		<table class="table table-striped">
+	  <tbody>
+		<%= render :partial => 'very_short_event', :collection => @events %>
+	  </tbody>
+	</table>
+</div>
+
+	
 	 <br>
           <%= paginate @events %>
 	
 
+
+		

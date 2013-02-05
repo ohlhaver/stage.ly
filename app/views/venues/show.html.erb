@@ -8,10 +8,19 @@
 	<br><br><br>
 <div class="hidden-phone">
 	<%= render :partial => 'events/label_bar'%>
-</div>
-</div>
-	<table class="table table-striped">
+
+		<table class="table table-striped">
 	  <tbody>
 		<%= render @events %>
 	  </tbody>
 	</table>
+
+</div>
+
+<div class="visible-phone">
+		<table class="table table-striped">
+	  <tbody>
+		<%= render :partial => 'events/very_short_event', :collection => @events %>
+	  </tbody>
+	</table>
+</div>
