@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :price, :time, :url, :venue_id, :title, :artist_ids, :type_id, :work_ids, :worktitle, :artisttitle, :category_ids, :direct_composer_ids, :subcategory_ids, :composertitle
+  attr_accessible :price, :time, :url, :venue_id, :title, :artist_ids, :type_id, :work_ids, :worktitle, :artisttitle, :category_ids, :direct_composer_ids, :subcategory_ids, :composertitle, :soldout, :cancelled
   has_many :performances
   has_many :artists, through: :performances
   has_many :categories_from_artists, through: :artists, :source => :categories

@@ -61,6 +61,9 @@
 	<div class="span2">
 		<%= event.time.strftime("%a, %e. %b") %><br>
 		<%= event.time.strftime("%-H:%M Uhr") %>
+		<b>
+						<%= "Leider ausverkauft!" if event.soldout? %>
+						<%= "Leider abgesagt!" if event.cancelled? %> </b>
 	</div>
 	
 </div>

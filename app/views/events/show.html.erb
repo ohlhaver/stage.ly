@@ -7,6 +7,18 @@
 		
 
 			<br>
+ 
+ 			<% if @event.soldout? or @event.cancelled? %>
+				<div class ="event_details_item">
+					<div class="hidden-phone"><div class ="span1"><i class="icon-exclamation-sign"></i> </div></div>
+					<div class ="span11"> <b>
+						<%= "Leider ausverkauft!" if @event.soldout? %>
+						<%= "Leider abgesagt!" if @event.cancelled? %> </b>
+					</div>
+				</div>
+				<div class="hidden-phone"><br><br></div>
+			<% end %>
+
 			<% if @event.works.any? or event_composers(@event).any? %>
 				<div class ="event_details_item">
 					<div class="hidden-phone"><div class ="span1"><i class="icon-book"></i> </div></div>
