@@ -58,7 +58,7 @@
 	<%end%>
 
 	<div class="span2">
-		<% if (event.time + 1.hour).today? %>
+		<% if (event.time).today? %>
 		<%= event.time.strftime("Heute") %><br>
 		<%else%>
 		<%= event.time.strftime("%e. %b") %><br>
