@@ -6,6 +6,9 @@
 	<div class="span8">
 			<div class ="event_details_item"%>
 				<%= link_to short_event.venue.name, short_event.venue %>
+					<b>
+						 <% if short_event.soldout? %> <br><%= "ausverkauft"%><%end%>
+						<% if short_event.cancelled? %> <br><%= "abgesagt"%><%end%> </b>
 			</div>
 							
 	</div>
@@ -14,6 +17,7 @@
 
 	<div class="span4">
 		<%= short_event.time.strftime("%a, %e. %b, %-H:%M Uhr") %><br>
+	
 		
 	</div>
 

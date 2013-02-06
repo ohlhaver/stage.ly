@@ -16,6 +16,10 @@
 					<%= render very_short_event.artists %>
 				
 				<% end %> 
+
+		<b>
+						<%= "ausverkauft" if very_short_event.soldout? %>
+						<%= "abgesagt" if very_short_event.cancelled? %> </b>
 			</div>
 							
 	</div>
