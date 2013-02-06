@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 	def index
 		if params[:q]
 				@events = Event.search params[:q], :match_mode => :any, :order => :time,
-		  :sort_mode => :asc
+		  :sort_mode => :asc, :with => {:time => 90.minutes.ago..60.days.from_now} 
 	  	else
 			@events = Event.all.sort_by(&:time)
 		end
