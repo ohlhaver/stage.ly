@@ -7,13 +7,15 @@
 
 				<% if very_short_event.type.gid == 1 && event_composers(very_short_event).any?%>
 					
-					<%= render event_composers(very_short_event).uniq.first(3) %>
+					
+					<%= render :partial => 'artists/artist_blank', :collection => event_composers(very_short_event).uniq.first(3) %>
 					<%= "... " if event_composers(very_short_event).uniq.count > 3 %> <br>
 							
 				<% elsif very_short_event.works.any?%>	
-					<%= render very_short_event.works %>
+					
+					<%= render :partial => 'works/work_blank', :collection => very_short_event.works %>
 				<% else %>
-					<%= render very_short_event.artists %>
+					<%= render :partial => 'artists/artist_blank', :collection => very_short_event.artists %>
 				
 				<% end %> 
 

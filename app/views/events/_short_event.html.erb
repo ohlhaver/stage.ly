@@ -5,7 +5,7 @@
 
 	<div class="span8">
 			<div class ="event_details_item"%>
-				<%= link_to short_event.venue.name, short_event.venue %>
+				<%= short_event.venue.name %>
 					<b>
 						 <% if short_event.soldout? %> <br><%= "ausverkauft"%><%end%>
 						<% if short_event.cancelled? %> <br><%= "abgesagt"%><%end%> </b>

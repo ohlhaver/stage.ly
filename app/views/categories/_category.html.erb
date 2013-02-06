@@ -1,1 +1,5 @@
-<% if category.id == params[:id].to_i  && params[:controller] == "categories" %>, <%= category.name%><% else %>, <%=link_to category.name, :controller => "categories", :action => "show", :id => category.id %><% end %>
+, <% if params[:controller] == "events" && params[:action] == "show" %> 
+ <%=link_to category.name, :controller => "categories", :action => "show", :id => category.id %>
+<%else%>
+<%= category.name%>
+<% end %>

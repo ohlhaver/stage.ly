@@ -8,14 +8,11 @@
 					<div class="span7">
 							<div class ="event_details_item"%>
 								<% if event.type.gid == 1 && event_composers(event).any?%>
-								<%= render event_composers(event).uniq.first(3) %>
+								<%= render :partial => 'artists/artist_blank', :collection => event_composers(event).uniq.first(3) %>
 								<%= "... " if event_composers(event).uniq.count > 3 %> <br>
 								<% elsif event.works.any?%>	
-								<%= render event.works %>
+								<%= render :partial => 'works/work_blank', :collection =>  event.works %>
 								<% end %> 
-								<b>
-						<%= "ausverkauft" if event.soldout? %>
-						<%= "abgesagt" if event.cancelled? %> </b>
 							</div>						
 					</div>
 				<% end %> 
@@ -24,12 +21,7 @@
 
 			<div class="span5">
 				<% unless event.type.gid == 2 && event.works.any? %>
-					<%= render event.artists %>
-						<% unless event.works.any? or event_composers(event).any?%>
-						<b>
-							<%= "ausverkauft" if event.soldout? %>
-							<%= "abgesagt" if event.cancelled? %> </b>
-						<% end %> 
+					<%= render :partial => 'artists/artist_blank', :collection => event.artists %>
 				<% end %>
 			</div>
 		</div>
@@ -49,8 +41,7 @@
 	<%else%>
 		<div class="span2">
 				<% if event_categories(event) && event_categories(event).uniq.first %>
-					<% if event_categories(event).uniq.first.id == params[:id].to_i && params[:controller] == "categories" %><%= event_categories(event).uniq.first.name %>
-					<% else %><%=link_to event_categories(event).uniq.first.name, event_categories(event).uniq.first %><% end %><%= render event_categories(event).uniq.drop(1)%> 
+					<%= event_categories(event).uniq.first.name %><%= render event_categories(event).uniq.drop(1)%> 
 				<% end %>
 
 		</div>
@@ -61,7 +52,7 @@
 	<% unless params[:controller] == "venues"%>
 		<div class="span3">
 				<div class="hidden-phone">
-					<%= link_to event.venue.name, event.venue unless params[:controller] == "venues"%>
+					<%= event.venue.name unless params[:controller] == "venues"%>
 				</div>
 		</div>
 	<%end%>
@@ -73,6 +64,9 @@
 		<%= event.time.strftime("%e. %b") %><br>
 		<%end%>
 		<%= event.time.strftime("%-H:%M Uhr") %>
+			<b>
+						<%= "ausverkauft" if event.soldout? %>
+						<%= "abgesagt" if event.cancelled? %> </b>
 
 	</div>
 	

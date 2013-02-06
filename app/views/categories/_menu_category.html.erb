@@ -1,7 +1,7 @@
 
 <br><br>
 <% if menu_category.id == params[:id].to_i && params[:controller] == "categories" %>
-	<%= menu_category.name %>
+	<b><%= menu_category.name %></b>
 <% else %> 
 <%=link_to menu_category.name, :controller => "categories", :action => "show", :id => menu_category.id%>
 <% end %>

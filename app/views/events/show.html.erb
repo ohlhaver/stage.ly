@@ -4,10 +4,7 @@
 
 <div class = "span8">
 	<div class="row-fluid">
-		
-
 			<br>
- 
  			<% if @event.soldout? or @event.cancelled? %>
 				<div class ="event_details_item">
 					<div class="hidden-phone"><div class ="span1"><i class="icon-exclamation-sign"></i> </div></div>
@@ -161,6 +158,7 @@
 								<%= render :partial => 'very_short_event', :collection => @same_categories_events %>
 							  </tbody>
 							</table>
+							<%= link_to "Mehr " +  @event_categories.first.name + " Konzerte >>",  @event_categories.first %>
 					</div>
 				</div>
 			</div>
