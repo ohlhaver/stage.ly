@@ -22,9 +22,13 @@ class Event < ActiveRecord::Base
   belongs_to :venue
   belongs_to :type
   before_save :generate_title
+  before_save :set_type_to_concert
   after_save :generate_work
   after_save :generate_artists
   after_save :generate_composers
+
+  after_initialize :set_defaults
+
 
   define_index do
     indexes artists.name, :as => :artists
@@ -55,6 +59,10 @@ class Event < ActiveRecord::Base
 
     
   	self.title = workname + " @ " + self.venue.name
+  end
+
+  def set_type_to_concert
+    self.type_id =1
   end
 
   def generate_work
@@ -107,6 +115,12 @@ class Event < ActiveRecord::Base
 
     "#{id}-#{this_title.downcase.gsub(/[^a-zA-Z0-9]+/, '-').gsub(/-{2,}/, '-').gsub(/^-|-$/, '')}-#{venue.name.downcase.gsub(/[^a-zA-Z0-9]+/, '-').gsub(/-{2,}/, '-').gsub(/^-|-$/, '')}"
   end
+
+    private
+      def set_defaults
+        self.type_id = 1 if self.new_record?
+        self.time = Time.now if self.new_record?
+      end 
 
 
 end
