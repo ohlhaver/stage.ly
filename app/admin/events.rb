@@ -39,6 +39,8 @@ ActiveAdmin.register Event do
 		        row :time
 		        row :price
 		        row :url
+		        row :soldout
+		        row :cancelled
 		        row :updated_at
 		        row :created_at
 
@@ -70,6 +72,8 @@ ActiveAdmin.register Event do
 	      f.input :time, :minute_step => 15
 	      f.input :price
 	      f.input :url
+	      f.input :soldout
+	      f.input :cancelled
 	    end
 
 	    f.inputs "direct Composers" do 
