@@ -4,7 +4,7 @@
 module ApplicationHelper
 
 	def full_slogan(page_title)
-	    base_title = "Alle Veranstaltungen in Lübeck"
+	    base_title = "Alle Konzerte in Lübeck"
 	    if page_title.empty?
 	      base_title
 	    else
@@ -13,7 +13,9 @@ module ApplicationHelper
  	end
 
  	def categories
- 		categories = Category.all.sort_by &:name
+ 		@type = Type.find(1)
+ 		categories = @type.categories.sort_by(&:name)
+ 		
  	end
 
  	def types

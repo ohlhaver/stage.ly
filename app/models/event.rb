@@ -38,7 +38,7 @@ class Event < ActiveRecord::Base
     indexes direct_composers.name, :as => :composers
     indexes subcategories.name, :as => :subcategories
 
-    has time
+    has time, type_id
     
   end
   #belongs_to :artist, :polymorphic => true

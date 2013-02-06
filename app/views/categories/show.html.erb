@@ -7,7 +7,7 @@
 		
 					<%# if params[:action] == "index" or params[:controller] == "categories" %>
 						
-							<%= link_to "Alle", root_path %> | 	<%= link_to @category.type.name, @category.type %>
+							<%= link_to "Alle", root_path %> <%= render :partial => 'categories/button_category', :collection => categories %>
 
 					<%#end%>
 		

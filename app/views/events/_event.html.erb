@@ -30,15 +30,15 @@
 
 
 
-	<% unless params[:controller] == "types" or params[:controller] == "categories" or params[:controller] == "artists" %>
+	<% if params[:controller] == "categories" && @category.subcategories.any? %>
+
 		<div class="span2">
-			<%= link_to event.type.singular, event.type %>
+			<% if event.subcategories.any? %>
+				<%= event.subcategories.uniq.first.name %><%= render event.subcategories.uniq.drop(1) %>
+			<% end %>
 		</div>
-	<% end %>
 
-
-
-	<% if params[:controller] == "types"%>
+	<%else%>
 		<div class="span2">
 				<% if event_categories(event) && event_categories(event).uniq.first %>
 					<% if event_categories(event).uniq.first.id == params[:id].to_i && params[:controller] == "categories" %><%= event_categories(event).uniq.first.name %>
@@ -48,15 +48,7 @@
 		</div>
 	<% end %>
 
-	<% if params[:controller] == "categories" && @category.subcategories.any? %>
 
-		<div class="span2">
-			<% if event.subcategories.any? %>
-				<%= event.subcategories.uniq.first.name %><%= render event.subcategories.uniq.drop(1) %>
-			<% end %>
-		</div>
-
-	<%end%>
 	
 	<% unless params[:controller] == "venues"%>
 		<div class="span3">

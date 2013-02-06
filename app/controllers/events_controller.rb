@@ -4,9 +4,9 @@ class EventsController < ApplicationController
 	def index
 		if params[:q]
 				@events = Event.search params[:q], :match_mode => :any, :order => :time,
-		  :sort_mode => :asc, :with => {:time => 90.minutes.ago..60.days.from_now} 
+		  :sort_mode => :asc, :with => {:time => 90.minutes.ago..60.days.from_now, :type_id => 1}
 	  	else
-			@events = Event.all.sort_by(&:time)
+			@events = Event.where(:type_id => 1).sort_by(&:time)
 		end
 
 		@events = Kaminari.paginate_array(@events).page(params[:page]).per(25)

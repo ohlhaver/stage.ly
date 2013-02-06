@@ -39,9 +39,8 @@
 			<div class ="event_details_item">
 				<div class="hidden-phone"><div class ="span1"><i class="icon-tags"></i> </div></div>
 				<div class ="span11">	
-					<%= link_to @event.type.singular, @event.type  %>
 					<% if event_categories(@event) && event_categories(@event).uniq.first %>
-						| <%=link_to event_categories(@event).uniq.first.name, event_categories(@event).uniq.first %><%= render event_categories(@event).uniq.drop(1)%> 
+						<%=link_to event_categories(@event).uniq.first.name, event_categories(@event).uniq.first %><%= render event_categories(@event).uniq.drop(1)%> 
 				<% end %>
 								<% if @event.subcategories.any? %>
 					| <%= @event.subcategories.uniq.first.name %><%= render @event.subcategories.uniq.drop(1) %>
@@ -100,23 +99,25 @@
 			<div class = "error_message">
 				<%= mail_to "stage.ly@gmail.com", "Daten korrekt?", :subject => 'Fehler bei Veranstaltung Id:' + @event.id.to_s , :class=> 'sea_green' %>
 			</div>
+			<br>
 
 
 
 
 
 			
-		<li></li>
+		
 
 
 			
 			
 		
 		<% if event_works_events(@event) && event_works_events(@event).any? %>
+		<li></li>
 			<div class= "same_categories_events">
 					<div class = "event_bar">
 						<div class="span10">
-							Andere Termine für die gleiche Veranstaltung in Lübeck:
+							Andere Termine für das gleiche Konzert in Lübeck:
 							
 						</div>
 					</div>
@@ -140,7 +141,7 @@
 				<div class= "same_categories_events">
 					<div class = "event_bar">
 						
-								Andere <%= link_to @event_categories.first.name, @event_categories.first %><%= render @event_categories.drop(1) %> Veranstaltungen in Lübeck:
+								Andere <%= link_to @event_categories.first.name, @event_categories.first %><%= render @event_categories.drop(1) %> Konzerte in Lübeck:
 								<br><br><br>
 							<table class="table table-striped">
 							  <tbody>
