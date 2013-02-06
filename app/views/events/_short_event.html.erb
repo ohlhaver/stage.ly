@@ -16,7 +16,12 @@
 
 
 	<div class="span4">
-		<%= short_event.time.strftime("%a, %e. %b, %-H:%M Uhr") %><br>
+		<% if (short_event.time + 1.hour).today? %>
+		<%= short_event.time.strftime("Heute, %-H:%M Uhr") %><br>
+		<%else%>
+		<%= short_event.time.strftime("%e. %b, %-H:%M Uhr") %><br>
+		<%end%>
+		
 	
 		
 	</div>
