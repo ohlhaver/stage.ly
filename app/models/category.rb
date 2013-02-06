@@ -12,6 +12,7 @@ class Category < ActiveRecord::Base
   belongs_to :type
 
   validates_uniqueness_of :name, :case_sensitive => false
+  default_scope order: 'categories.name ASC'
 
 
   def to_param

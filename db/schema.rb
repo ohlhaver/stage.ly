@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130204225231) do
+ActiveRecord::Schema.define(:version => 20130206181049) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -127,6 +127,8 @@ ActiveRecord::Schema.define(:version => 20130204225231) do
     t.string   "worktitle"
     t.string   "artisttitle"
     t.string   "composertitle"
+    t.boolean  "soldout"
+    t.boolean  "cancelled"
   end
 
   add_index "events", ["type_id"], :name => "index_events_on_type_id"

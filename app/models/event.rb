@@ -23,6 +23,7 @@ class Event < ActiveRecord::Base
   belongs_to :type
   before_save :generate_title
   before_save :set_type_to_concert
+  before_save :fix_url
   after_save :generate_work
   after_save :generate_artists
   after_save :generate_composers
@@ -63,6 +64,10 @@ class Event < ActiveRecord::Base
 
   def set_type_to_concert
     self.type_id =1
+  end
+
+  def fix_url
+    self.url = self.url.gsub("http://","")
   end
 
   def generate_work

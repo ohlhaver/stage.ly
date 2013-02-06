@@ -62,7 +62,7 @@ ActiveAdmin.register Event do
 
     form do |f|
 	    f.inputs "Event" do
-	      f.input :type,  :input_html => { :selection => 1 }
+	      f.input :type
 	      f.input :composertitle
 	      f.input :worktitle
 	      f.input :artisttitle
@@ -85,7 +85,7 @@ ActiveAdmin.register Event do
 	    end
 
 	    f.inputs "Artists" do 
-	      f.input :artists
+	      f.input :artists, :order => :name
 	    end
 
 	    f.inputs "Works" do 

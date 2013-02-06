@@ -11,6 +11,7 @@ class Work < ActiveRecord::Base
   belongs_to :subcategory
 
   validates_uniqueness_of :name, :case_sensitive => false
+  default_scope order: 'works.name DESC'
 
 
   def to_param

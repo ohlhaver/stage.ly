@@ -8,6 +8,7 @@ class Artist < ActiveRecord::Base
   has_many :works, through: :compositions
 
   validates_uniqueness_of :name, :case_sensitive => false
+  default_scope order: 'artists.name ASC'
 
 
 
