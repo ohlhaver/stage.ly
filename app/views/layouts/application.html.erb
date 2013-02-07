@@ -66,7 +66,7 @@ _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
 			                  	</div>
               				</div>
               				<br>
-              												<div class="visible-phone">
+              				<div class="visible-phone">
 								<div class='slogan'>
 									<% if @event && @event.url != "" %>
 									<%= link_to full_slogan(yield(:title)).html_safe, "http://#{@event.url}" %>
@@ -98,17 +98,19 @@ _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
 </div>
 
 
-</body>
+
 
 <footer>
 	<div class="container-fluid">
 		<div class="row-fluid">
-			<div class="span12">
-		
+			<div class ="span2"%></div>
+			<div class="span8">
+				<b><%= mail_to "stage.ly@gmail.com", "Fehlt ein Konzert? / Konzert hinzufügen!", :subject => 'fehlendes Konzert!', :class=> 'sea_green' %></b><br><br>
 				<%= mail_to "stage.ly@gmail.com", "Feedback", :subject => 'Feedback', :class=> 'sea_green' %>  ·  <%= link_to "Impressum", imprint_path %> · (c) stage.ly
 			</div>
 		</div>
 	</div>
 </footer>
+</body>
 
 </html>

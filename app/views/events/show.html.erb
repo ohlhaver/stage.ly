@@ -4,7 +4,6 @@
 
 <div class = "span7">
 	<div class="row-fluid">
-			<br>
  			<% if @event.soldout? or @event.cancelled? %>
 				<div class ="event_details_item">
 					<div class="hidden-phone"><div class ="span1"><i class="icon-exclamation-sign"></i> </div></div>
@@ -149,8 +148,7 @@
 <% if @same_categories_events.any? %>
 	<div class = "span5">
 			<div class="visible-phone"><li></li></div>
-				<div class= "same_categories_events">
-					<div class = "event_bar">
+
 						
 								Andere <%= link_to @event_categories.first.name, @event_categories.first %><%= render @event_categories.drop(1) %> Konzerte in Lübeck:
 								<br><br><br>
@@ -160,8 +158,7 @@
 							  </tbody>
 							</table>
 							<%= link_to "Mehr " +  @event_categories.first.name + " Konzerte >>",  @event_categories.first %>
-					</div>
-				</div>
+
 			</div>
 	</div>
 <%end%>
