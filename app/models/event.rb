@@ -30,6 +30,10 @@ class Event < ActiveRecord::Base
 
   after_initialize :set_defaults
 
+  attr_default :time do
+    Time.now
+  end
+
 
   define_index do
     indexes artists.name, :as => :artists
@@ -124,7 +128,7 @@ class Event < ActiveRecord::Base
     private
       def set_defaults
         self.type_id = 1 if self.new_record?
-        self.time = Time.now if self.new_record?
+        #self.time = Time.now if self.new_record?
       end 
 
 
