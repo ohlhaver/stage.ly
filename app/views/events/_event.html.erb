@@ -7,11 +7,12 @@
 				<% if event.works.any? or event_composers(event).any?%>	
 					<div class="span7">
 							<div class ="event_details_item"%>
-								<% if event.type.gid == 1 && event_composers(event).any?%>
+								<% if event.works.any?%>	
+								<%= render :partial => 'works/work_blank', :collection =>  event.works %>
+								<% elsif event_composers(event).any?%>
 								<%= render :partial => 'artists/artist_blank', :collection => event_composers(event).uniq.first(3) %>
 								<%= "... " if event_composers(event).uniq.count > 3 %> <br>
-								<% elsif event.works.any?%>	
-								<%= render :partial => 'works/work_blank', :collection =>  event.works %>
+								
 								<% end %> 
 							</div>						
 					</div>
@@ -59,11 +60,13 @@
 
 	<div class="span2">
 		<% if (event.time + 1.hour).today? %>
-		<%= event.time.strftime("Heute") %><br>
+		<b><%= "Heute" %><br>
+		<% elsif (event.time + 1.hour) < Time.now + 6.days %>
+		<%= german_weekday(event.time.strftime("%w")) %><br>
 		<%else%>
-		<%= event.time.strftime("%e. %b") %><br>
+		<%= event.time.strftime("%e. ") + german_month(event.time.strftime("%-m")) %><br>
 		<%end%>
-		<%= event.time.strftime("%-H:%M Uhr") %>
+		<%= event.time.strftime("%-H:%M Uhr") %></b>
 			<b>
 						<%= "ausverkauft" if event.soldout? %>
 						<%= "abgesagt" if event.cancelled? %> </b>

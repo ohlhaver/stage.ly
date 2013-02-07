@@ -19,8 +19,11 @@
 		<% if (short_event.time + 1.hour).today? %>
 		<%= short_event.time.strftime("Heute, %-H:%M Uhr") %><br>
 		<%else%>
-		<%= short_event.time.strftime("%e. %b, %-H:%M Uhr") %><br>
+		<%= short_event.time.strftime("%e. ") + german_month(short_event.time.strftime("%-m"))%>,
+		<%= short_event.time.strftime("%-H:%M Uhr") %><br>
 		<%end%>
+		
+
 		
 	
 		

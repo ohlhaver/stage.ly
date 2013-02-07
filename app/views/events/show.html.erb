@@ -1,8 +1,8 @@
-<% provide :title, event_title(@event) + " @ " + @event.venue.name %>
+<% provide :title, event_title(@event) + " am " + @event.time.strftime("%e. ") + german_month(@event.time.strftime("%-m")) %>
 <% provide :page_title, event_title(@event) + " @ " + @event.venue.name %>
 <% (provide :keywords, @event.artists.first.name + more_event_titles(@event) + ", " + @event.venue.name) if @event.artists.any? %>
 
-<div class = "span8">
+<div class = "span7">
 	<div class="row-fluid">
 			<br>
  			<% if @event.soldout? or @event.cancelled? %>
@@ -80,7 +80,12 @@
 			<div class ="event_details_item">
 				<div class="hidden-phone"><div class ="span1"><i class="icon-calendar"></i> </div></div>
 				<div class ="span11">
-				<%= @event.time.strftime("%a, %e. %b, %-H:%M Uhr") %>
+				
+		<% if (@event.time + 1.hour).today? %>
+		<%= "Heute"%><% else %>
+		<%= german_weekday(@event.time.strftime("%w"))%><%end%>,
+		<%= @event.time.strftime("%e. ") + german_month(@event.time.strftime("%-m"))%>,
+		<%= @event.time.strftime("%-H:%M Uhr") %>
 				</div>
 			</div>
 			<br>
@@ -100,15 +105,11 @@
 				<div class ="event_details_item">	
 					<div class="hidden-phone"><div class ="span1"><i class="icon-zoom-in"></i> </div></div>
 					<div class ="span11">
-						Mehr: <%= link_to truncate(@event.url, :length => 20, :omission =>"...", :separator => ' '), "http://#{@event.url}" %>
+						Mehr: <%= link_to truncate(@event.url, :length => 20, :omission =>"...", :separator => ' '), "http://#{@event.url}" %>	
 					</div>
 				</div>
 				<div class="hidden-phone"><br><br></div><br>
 			<%end%>
-
-			<div class = "error_message">
-				<%= mail_to "stage.ly@gmail.com", "Daten korrekt?", :subject => 'Fehler bei Veranstaltung Id:' + @event.id.to_s , :class=> 'sea_green' %>
-			</div>
 			<br>
 
 
@@ -146,7 +147,7 @@
 
 		
 <% if @same_categories_events.any? %>
-	<div class = "span4">
+	<div class = "span5">
 			<div class="visible-phone"><li></li></div>
 				<div class= "same_categories_events">
 					<div class = "event_bar">
