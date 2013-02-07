@@ -1,0 +1,65 @@
+<tr onclick="location.href='<%=event_path(mobile_event)%>';" style="cursor:pointer">
+        <td>
+<div class = "very_short_event_listing" >
+
+	<div class="span8">
+			<div class ="event_details_item"%>
+
+				<% if mobile_event.works.any?%>	
+					
+					<%= render :partial => 'works/work_blank', :collection => mobile_event.works %>
+
+				<% elsif mobile_event.type.gid == 1 && event_composers(mobile_event).any?%>
+					
+					
+					<%= render :partial => 'artists/artist_blank', :collection => event_composers(mobile_event).uniq.first(3) %>
+					<%= "... " if event_composers(mobile_event).uniq.count > 3 %>
+							
+				
+				<% else %>
+					<%= render :partial => 'artists/artist_blank', :collection => mobile_event.artists %>
+				
+				<% end %> 
+
+		<b>
+						<% if mobile_event.soldout? %><%= "ausverkauft" %> <%end%> 
+						<% if mobile_event.cancelled? %><%= "abgesagt" %> <%end%> </b>
+			</div>
+							
+	</div>
+	<% if params[:controller] == "categories" && @category.subcategories.any? %>
+		<% if mobile_event.subcategories.any? %>
+		<div class="span2">
+			
+				<%= mobile_event.subcategories.uniq.first.name %><%= render event.subcategories.uniq.drop(1) %>
+			
+		</div>
+		<% end %>
+
+	<%else%>
+	<% if event_categories(mobile_event) && event_categories(mobile_event).uniq.first %>
+		<div class="span2">
+				
+					<%= event_categories(mobile_event).uniq.first.name %><%= render event_categories(mobile_event).uniq.drop(1)%> 
+				
+
+		</div>
+		<% end %>
+	<% end %>
+			
+
+	<div class="span4">
+				<% if (mobile_event.time + 1.hour).today? %>
+		<%= mobile_event.time.strftime("Heute") %><br>
+		<% elsif (mobile_event.time + 1.hour) < Time.now + 6.days %>
+		<%= german_weekday(mobile_event.time.strftime("%w")) %><br>
+		<%else%>
+		<%= mobile_event.time.strftime("%e. ") + german_month(mobile_event.time.strftime("%-m"))%><br>
+		<%end%>
+		<%= mobile_event.time.strftime("%-H:%M Uhr") %>
+	</div>
+
+
+</div>
+</td>
+</tr>
