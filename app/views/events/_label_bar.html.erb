@@ -13,19 +13,12 @@
 	</div>
 </div>
 
-		<% unless params[:controller] == "categories" %>
-			<div class="span2">
-				Genre
-			</div>
-		<%end%>
 
-		<% if params[:controller] == "categories" && @category.subcategories.any? %>
 
 			<div class="span2">
 				Genre
 			</div>
 
-		<%end%>
 
 	<% unless params[:controller] == "venues"%>
 		<div class="span3">
