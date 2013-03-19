@@ -17,7 +17,7 @@ class Event < ActiveRecord::Base
   
   validates_presence_of :venue_id, :time, :type_id
 
-  default_scope { where("time > ?", Time.now - 1.hours) }
+  #default_scope { where("time > ?", Time.now - 1.hours) }
 
   belongs_to :venue
   belongs_to :type
